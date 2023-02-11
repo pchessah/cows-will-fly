@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@cows-will-fly/elements/common-ui": [
+        "libs/elements/common-ui/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
