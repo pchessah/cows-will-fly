@@ -17,6 +17,14 @@
     "paths": {
       "@cows-will-fly/elements/common-ui": [
         "libs/elements/common-ui/src/index.ts"
+      ],
+      "@cows-will-fly/elements/external": [
+        "libs/elements/external/src/index.ts"
+      ],
+      "@cows-will-fly/features/cart": ["libs/features/cart/src/index.ts"],
+      "@cows-will-fly/features/home": ["libs/features/home/src/index.ts"],
+      "@cows-will-fly/features/products": [
+        "libs/features/products/src/index.ts"
       ]
     }
   },
