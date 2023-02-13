@@ -1,3 +1,5 @@
+@import '../../../../../../../apps/mbaozetu/src/styles.scss';
+
 .banner{
   display: flex;
   flex-direction: row;
@@ -15,13 +17,16 @@
 }
 
 .title{
-  
   font-size: 60px;
   font-family: 'Explora', cursive;
 }
 
 img{
   width: 50%;
+}
+
+.btn{
+  background-color: $primary-color !important;
 }
 
 @media only screen and (max-width: 600px) {
