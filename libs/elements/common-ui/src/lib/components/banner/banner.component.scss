@@ -27,6 +27,13 @@ img{
 
 .btn{
   background-color: $primary-color !important;
+  color: white !important;
+}
+
+.btn:hover{
+  background-color: white !important;
+  color:$primary-color !important;
+
 }
 
 @media only screen and (max-width: 600px) {

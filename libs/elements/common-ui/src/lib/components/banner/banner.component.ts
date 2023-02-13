@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-banner',
@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class BannerComponent implements OnInit {
+
+  @Output() bannerAction:EventEmitter<boolean> = new EventEmitter();
+  
   constructor() { }
 
   ngOnInit() { }
