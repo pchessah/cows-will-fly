@@ -1,3 +1,5 @@
+@import '../../../../../../../apps/mbaozetu/src/styles.scss';
+
 .card{
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   display: flex;
@@ -5,6 +7,12 @@
   width: 350px;
   height: 430px;
   margin: 25px 5px;
+}
+
+.card:hover{
+  cursor: pointer;
+  outline: 2px solid $secondary-color;
+  outline-offset: 2px;
 }
 
 .product-details, .actions{
