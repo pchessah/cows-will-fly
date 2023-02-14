@@ -2,6 +2,11 @@
 
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+* {
+  font-family: 'Bitter', serif;
+  }
 $primary-color: #794328;
 $secondary-color: #bb9c36;
 $tertiary-color: #f8f5b8;
+
+
