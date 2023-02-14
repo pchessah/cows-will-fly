@@ -1,0 +1,34 @@
+.card{
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 450px;
+  margin: 25px 5px;
+}
+
+.product-details, .actions{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: calc(100% - 10px);
+  padding: 5px;
+  margin: 10px 0;
+}
+
+.product-img{
+  width: 100%;
+  height: 65%
+}
+
+.product-count{
+  width: 45px;
+}
+
+.remove-btn{
+  border-color: rgb(235, 21, 21) !important;
+}
+
+.add-btn{
+  border-color: green !important;
+}

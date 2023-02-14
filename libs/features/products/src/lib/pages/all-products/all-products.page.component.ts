@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AllProductsPageComponent implements OnInit {
-  constructor() { }
+
+productCount: any[] = []
+  
+  constructor() {
+    this.productCount = new Array(50);
+   }
 
   ngOnInit() { }
 }
