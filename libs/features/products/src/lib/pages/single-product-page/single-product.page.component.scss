@@ -1,0 +1,75 @@
+.card {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 70vh;
+  margin: 25px 5px;
+}
+
+.cart {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  margin: 25px 5px;
+  width: 300px;
+  height: 70vh;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.product-details,
+.actions,
+.product-description {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: calc(100% - 30px);
+  padding: 15px;
+  margin: 10px 0;
+}
+
+.product-details,
+.product-description {
+  padding-top: 0px;
+}
+
+.product-name{
+  font-family: 'Bitter', serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.product-count{
+  width: 45px;
+}
+
+.remove-btn{
+  border-color: rgb(235, 21, 21) !important;
+}
+
+.add-btn{
+  border-color: green !important;
+}
+
+.product-description{
+  font-style: italic;
+  font-size: 12px;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .cart {
+    width: 90vw;
+    height: unset;
+  }
+
+  .card {
+    width: 90vw;
+    height: unset;
+  }
+}
