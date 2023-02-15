@@ -5,9 +5,10 @@ import { ElementsCommonUiModule} from '@cows-will-fly/elements/common-ui';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductsRoutingModule } from './products.router.module';
 import { AllProductsPageComponent } from './pages/all-products/all-products.page.component';
+import { SingleProductPageComponent } from './pages/single-product-page/single-product.page.component';
 
 @NgModule({
   imports: [CommonModule, ProductsRoutingModule, AngularMaterialModule, ElementsCommonUiModule],
-  declarations:[ProductCardComponent, AllProductsPageComponent, ]
+  declarations:[ProductCardComponent, AllProductsPageComponent, SingleProductPageComponent ]
 })
 export class FeaturesProductsModule {}
