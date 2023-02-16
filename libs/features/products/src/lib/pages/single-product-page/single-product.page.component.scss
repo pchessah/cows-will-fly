@@ -63,12 +63,7 @@
 
 
 @media only screen and (max-width: 600px) {
-  .cart {
-    width: 90vw;
-    height: unset;
-  }
-
-  .card {
+  .cart, .card {
     width: 90vw;
     height: unset;
   }

@@ -1,2 +1,11 @@
 <app-navbar></app-navbar>
-<app-cart-summary></app-cart-summary>
+<div class="page">
+  <span class="title"> Your Cart </span>
+  <div class="card">
+    <app-cart-summary></app-cart-summary>
+  </div>
+  <div class="action-card">
+    <button mat-raised-button color="warn">Clear Cart</button>
+    <button mat-stroked-button color="primary">Shop More</button>
+    <button mat-raised-button color="primary">Check out</button>
+</div>
