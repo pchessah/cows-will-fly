@@ -16,6 +16,13 @@ const routes: Routes = [
         "../../../../libs/features/home/src/lib/features-home.module"
       ).then((m) => m.FeaturesHomeModule),
   },
+  {
+    path: "cart",
+    loadChildren: () =>
+      import(
+        "../../../../libs/features/cart/src/lib/features-cart.module"
+      ).then((m) => m.FeaturesCartModule),
+  },
   { path: "", redirectTo: "/home", pathMatch: "full" },
 ]; 
 

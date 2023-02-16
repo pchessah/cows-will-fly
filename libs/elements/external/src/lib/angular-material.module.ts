@@ -43,6 +43,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import {MatBadgeModule} from '@angular/material/badge';
 
 /**
  * Module that imports all the modules we use from angular material.
@@ -52,7 +53,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 @NgModule({
     imports: [],
-    exports: [ MatRippleModule, MatDatepickerModule,
+    exports: [ MatRippleModule, MatDatepickerModule,MatBadgeModule,
                MatButtonModule, MatStepperModule, MatCheckboxModule, MatToolbarModule, MatProgressSpinnerModule, MatProgressBarModule, MatMenuModule,
                MatCardModule, MatFormFieldModule, MatRadioModule, MatSelectModule, MatIconModule,
                MatTableModule, MatDialogModule, MatListModule, MatSnackBarModule, MatInputModule,
