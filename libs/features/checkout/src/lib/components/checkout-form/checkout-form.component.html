@@ -1,0 +1,19 @@
+<div class="form-container">
+  <span class="title">Checkout</span>
+  <form class="form" [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm)">
+  
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="Enter your email" formControlName="email" required />
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <input formControlName="phone" matInput type="number" placeholder="Enter your phone number" />
+    </mat-form-field>
+    
+    <div class="form-footer">
+      <button type="reset" mat-stroked-button color="warn">Back</button>
+      <button [disabled]="checkoutForm.invalid" type="submit" mat-stroked-button color="primary">Complete Checkout</button>
+    </div>
+  
+  </form>
+</div>

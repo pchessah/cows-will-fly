@@ -1,0 +1,38 @@
+.form{
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  width: 90%;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+}
+
+mat-form-field{
+  margin-bottom: 10px;
+  width: 90%;
+}
+
+.title{
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Bitter', serif;
+  margin-bottom: 15px;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 25px 0px;
+}
+
+
