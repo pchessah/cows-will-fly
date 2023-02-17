@@ -1,0 +1,17 @@
+.page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3%;
+}
+
+img{
+  width: 400px;
+  height: 400px;
+  margin-bottom: 5px;
+}
+
+.go-home-btn{
+  padding: 10px 20px;
+}
