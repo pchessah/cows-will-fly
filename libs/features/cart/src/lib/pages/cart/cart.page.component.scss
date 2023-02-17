@@ -1,13 +1,4 @@
-.page {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  padding: 5%;
-}
-
-.action-card, .card {
+.action-card{
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   display: flex;
   flex-direction: column;
@@ -23,26 +14,14 @@
   padding: 10px;
 }
 
-
 .title{
   font-size: 18px;
   font-weight: 600;
+  font-family: 'Bitter', serif;
 }
 
 img{
   width: 450px;
   height: 450px;
-}
-
-
-@media only screen and (max-width: 600px) {
-  .action-card, .card {
-    width: 350px;
-    margin: 25px 0px;
-  }
-
-  .page{
-    padding: 5% 0;
-  }
 }
 
