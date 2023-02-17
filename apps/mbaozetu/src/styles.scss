@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 * {
   font-family: 'Bitter', serif;
@@ -8,5 +9,36 @@
 $primary-color: #794328;
 $secondary-color: #bb9c36;
 $tertiary-color: #f8f5b8;
+
+.page {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  padding: 5%;
+}
+
+.card {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  margin: 25px 5px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .action-card, .card {
+    width: 350px;
+    margin: 25px 0px;
+  }
+
+  .page{
+    padding: 5% 0;
+  }
+}
+
+
 
 
