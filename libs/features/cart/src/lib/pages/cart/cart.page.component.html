@@ -1,11 +1,20 @@
 <app-navbar></app-navbar>
 <div class="page">
-  <span class="title"> Your Cart </span>
-  <div class="card">
-    <app-cart-summary></app-cart-summary>
-  </div>
-  <div class="action-card">
-    <button mat-raised-button color="warn">Clear Cart</button>
-    <button mat-stroked-button color="primary">Shop More</button>
-    <button mat-raised-button color="primary">Check out</button>
-</div>
+  <ng-container *ngIf="!noItemsInCart else noItemsTemplate">
+    <span class="title"> Your Cart </span>
+    <div class="card">
+      <app-cart-summary></app-cart-summary>
+    </div>
+    <div class="action-card">
+      <button (click)="clearCart()" mat-raised-button color="warn">Clear Cart</button>
+      <button (click)="goToProducts()" mat-stroked-button color="primary">Shop More</button>
+      <button (click)="goToCheckout()" mat-raised-button color="primary">Check out</button>
+    </div>
+  </ng-container>
+
+
+<ng-template #noItemsTemplate>
+  <span class="title">No Items in Cart</span>
+  <img src="assets/no-cart.svg" alt="no-items-in-cart"/>
+  <button (click)="goToProducts()" mat-stroked-button color="primary">Go To Products</button>
+</ng-template>
