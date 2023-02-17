@@ -22,6 +22,9 @@
         "libs/elements/external/src/index.ts"
       ],
       "@cows-will-fly/features/cart": ["libs/features/cart/src/index.ts"],
+      "@cows-will-fly/features/checkout": [
+        "libs/features/checkout/src/index.ts"
+      ],
       "@cows-will-fly/features/home": ["libs/features/home/src/index.ts"],
       "@cows-will-fly/features/products": [
         "libs/features/products/src/index.ts"
