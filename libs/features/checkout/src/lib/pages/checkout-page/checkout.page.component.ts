@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class CheckOutPageComponent implements OnInit {
-  constructor() { }
+
+  orderIsPending: boolean = true;
+
+  constructor(private _router:Router) { }
 
   ngOnInit() { }
+
+  goToHome(){
+    this._router.navigateByUrl('/');
+  }
 }

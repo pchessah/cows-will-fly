@@ -1,6 +1,13 @@
 <app-navbar></app-navbar>
 <div class="page">
   <div class="card">
-    <app-checkout-form></app-checkout-form>
+    <ng-container *ngIf="orderIsPending else orderPlaced">
+      <app-checkout-form (orderPlacedEvent)="orderIsPending = true"></app-checkout-form>
+    </ng-container>
   </div>
 </div>
+
+<ng-template #orderPlaced>
+  <img src="assets/order-confirmed.svg" alt="Order confirmed" />
+  <button (click)="goToHome()" mat-stroked-button color="primary">Go home</button>
+</ng-template>
