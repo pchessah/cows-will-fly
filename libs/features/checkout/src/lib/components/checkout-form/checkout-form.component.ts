@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 export class CheckoutFormComponent implements OnInit {
 
+  @Output()orderPlacedEvent: EventEmitter<boolean> = new EventEmitter();
 
   checkoutForm: FormGroup;
  
@@ -22,7 +23,7 @@ export class CheckoutFormComponent implements OnInit {
   ngOnInit() { }
 
   onSubmit(checkoutForm:any){
-    debugger
-
+    this.orderPlacedEvent.emit(true);
+  
   }
 }
