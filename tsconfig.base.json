@@ -13,10 +13,6 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "include": [
-      "./libs/*/src/**/*",
-      "./apps/*/src/**/*"
-    ],
     "baseUrl": ".",
     "paths": {
       "@cows-will-fly/elements/common-ui": [
