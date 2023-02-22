@@ -31,7 +31,8 @@
       ],
       "@cows-will-fly/interfaces/product": [
         "libs/interfaces/product/src/index.ts"
-      ]
+      ],
+      "@cows-will-fly/state/products": ["libs/state/products/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
