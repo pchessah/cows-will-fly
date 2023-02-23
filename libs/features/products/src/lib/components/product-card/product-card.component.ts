@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { IProduct } from '@cows-will-fly/interfaces/product';
 
 @Component({
   selector: 'app-product-card',
@@ -10,7 +11,16 @@ import { Router } from '@angular/router';
 export class ProductCardComponent implements OnInit {
   constructor(private _router:Router) { }
 
+  @Input() product!:IProduct;
+
+
   ngOnInit() { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['product']){
+      this.product = changes['product'].currentValue;
+    }
+  }
 
   goToProduct(){
     //TODO: ADD PRODUCT ID TO ROUTE

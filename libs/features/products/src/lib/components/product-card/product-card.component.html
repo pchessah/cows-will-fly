@@ -1,6 +1,6 @@
 <div class="card" (click)="goToProduct()">
   <img class="product-img"
-    src="https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    [src]="product.imageUrl"
     alt="product-img" />
   <div class="actions">
     <button color="warn" class="remove-btn" mat-stroked-button>-</button>
@@ -9,10 +9,10 @@
   </div>
   <div class="product-details">
     <div class="product-name">
-      Chair
+      {{product.name}}
     </div>
     <div class="product-price">
-      Ksh. 2500.00
+      Ksh. {{product.price}}
     </div>
   </div>
 </div>

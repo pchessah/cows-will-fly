@@ -11,7 +11,6 @@ import { Observable } from 'rxjs';
 
 export class AllProductsPageComponent implements OnInit {
 
-
 products$!: Observable<IProduct[]>
   
   constructor(private _productService: ProductService) {
