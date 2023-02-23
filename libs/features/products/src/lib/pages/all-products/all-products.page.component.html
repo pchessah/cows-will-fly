@@ -1,4 +1,4 @@
 <app-navbar></app-navbar>
-<div class="product-list">
-  <app-product-card *ngFor="let product of productCount"></app-product-card>
+<div class="product-list" *ngIf="products$ |async as products">
+  <app-product-card *ngFor="let product of products"></app-product-card>
 </div>
