@@ -32,6 +32,7 @@
       "@cows-will-fly/interfaces/product": [
         "libs/interfaces/product/src/index.ts"
       ],
+      "@cows-will-fly/state/cart": ["libs/state/cart/src/index.ts"],
       "@cows-will-fly/state/products": ["libs/state/products/src/index.ts"]
     }
   },
