@@ -18,6 +18,6 @@ products$!: Observable<IProduct[]>
    }
 
   ngOnInit() {
-    this.products$ = this._productsStore$$.getProducts();
+    this.products$ = this._productsStore$$.getProducts() as Observable<IProduct[]>;
   }
 }
