@@ -26,7 +26,7 @@ import { environemnt } from '../environments/environment';
     MatButtonModule,
     AngularFireModule.initializeApp(environemnt.firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
     AngularFireStorageModule,
     AngularFireAuthModule,
     StateProductsModule.forRoot()
