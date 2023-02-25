@@ -10,6 +10,7 @@ import { AngularFireModule } from "@angular/fire/compat";
 
 import { FeaturesHomeModule} from '@cows-will-fly/features/home';
 import { StateProductsModule } from '@cows-will-fly/state/products';
+import { StateCartModule } from '@cows-will-fly/state/cart';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from '../routes/app.routing.module';
@@ -29,7 +30,8 @@ import { environemnt } from '../environments/environment';
     AngularFirestoreModule.enablePersistence(),
     AngularFireStorageModule,
     AngularFireAuthModule,
-    StateProductsModule.forRoot()
+    StateProductsModule.forRoot(),
+    StateCartModule.forRoot()
    ],
   providers: [],
   bootstrap: [AppComponent],
