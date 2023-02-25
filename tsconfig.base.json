@@ -29,6 +29,7 @@
       "@cows-will-fly/features/products": [
         "libs/features/products/src/index.ts"
       ],
+      "@cows-will-fly/interfaces/cart": ["libs/interfaces/cart/src/index.ts"],
       "@cows-will-fly/interfaces/product": [
         "libs/interfaces/product/src/index.ts"
       ],
