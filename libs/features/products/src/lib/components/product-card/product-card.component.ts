@@ -23,8 +23,6 @@ export class ProductCardComponent implements OnInit {
   }
 
   goToProduct(){
-    //TODO: ADD PRODUCT ID TO ROUTE
-    this._router.navigateByUrl('/products/1')
-
+    this._router.navigateByUrl(`/products/${this.product.id}`)
   }
 }
