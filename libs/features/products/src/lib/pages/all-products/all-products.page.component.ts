@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from '@cows-will-fly/interfaces/product';
-import { ProductService} from '@cows-will-fly/state/products'
 import { Observable } from 'rxjs';
+import { IProduct } from '@cows-will-fly/interfaces/product';
+import { ProductStore} from '@cows-will-fly/state/products'
 
 @Component({
   selector: 'app-all-products',
@@ -13,9 +13,11 @@ export class AllProductsPageComponent implements OnInit {
 
 products$!: Observable<IProduct[]>
   
-  constructor(private _productService: ProductService) {
-    this.products$ = _productService.products$
+  constructor(private _productsStore$$: ProductStore) {
+   
    }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.products$ = this._productsStore$$.getProducts();
+  }
 }
