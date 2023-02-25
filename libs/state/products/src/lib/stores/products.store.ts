@@ -18,7 +18,7 @@ export class ProductStore {
 
 
   private _initializedDataFromFirestore(){
-    return this._afs.collection('products').valueChanges().subscribe(data =>{
+    return this._afs.collection('products').valueChanges().subscribe(data => {
       this._productsSrc$$.next(data as any);
     })
   }
