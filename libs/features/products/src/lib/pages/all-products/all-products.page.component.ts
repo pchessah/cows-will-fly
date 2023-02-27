@@ -11,11 +11,9 @@ import { ProductStore} from '@cows-will-fly/state/products'
 
 export class AllProductsPageComponent implements OnInit {
 
-products$!: Observable<IProduct[]>
+  products$!: Observable<IProduct[]>
   
-  constructor(private _productsStore$$: ProductStore) {
-   
-   }
+  constructor(private _productsStore$$: ProductStore) { }
 
   ngOnInit() {
     this.products$ = this._productsStore$$.getProducts() as Observable<IProduct[]>;
