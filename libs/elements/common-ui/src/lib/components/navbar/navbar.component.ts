@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, map } from 'rxjs';
+
+import { CartService } from '@cows-will-fly/state/cart';
 
 @Component({
   selector: 'app-navbar',
@@ -10,9 +13,18 @@ import { Router } from '@angular/router';
 
 export class NavbarComponent implements OnInit {
 
-  constructor(private _router:Router) { }
+  cartCount$!: Observable<number>;
 
-  ngOnInit() { }
+  constructor(private _router:Router,
+              private _cartService:CartService) { }
+
+  ngOnInit() {
+    this.cartCount$ = 
+      this._cartService.getCart().pipe(map(res =>{
+        return res.map(r => r.count).reduce((a,b) => a+b, 0);
+      }))
+
+  }
 
   goToCartPage(){
     this._router.navigateByUrl('/cart');

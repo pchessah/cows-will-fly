@@ -5,7 +5,7 @@
       <span class="title">Mbao Zetu</span>
     </div>
     <span class="example-spacer"></span>
-    <span (click)="goToCartPage()" class="cart-icon"  matBadge="3" matBadgeColor="warn">
+    <span *ngIf="cartCount$ |async as cartCount" (click)="goToCartPage()" class="cart-icon"  [matBadge]="cartCount" matBadgeColor="warn">
       <i class="fa fa-cart-shopping"></i>
     </span>
   </mat-toolbar>
