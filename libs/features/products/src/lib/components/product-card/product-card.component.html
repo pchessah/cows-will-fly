@@ -1,11 +1,11 @@
-<div class="card" (click)="goToProduct()">
+<div class="card">
   <img class="product-img"
     [src]="product.imageUrl"
     alt="product-img" />
   <div class="actions">
-    <button color="warn" class="remove-btn" mat-stroked-button>-</button>
-    <input title="number" type="number" class="product-count" />
-    <button color="primary" class="add-btn" mat-stroked-button>+</button>
+    <button (click)="removeItemFromCart(product)" color="warn" class="remove-btn" mat-stroked-button>-</button>
+    <input title="number" (change)="onChangeValue($event)" [(ngModel)]="productCountInCart" type="number" class="product-count" />
+    <button (click)="addItemToCart(product)" color="primary" class="add-btn" mat-stroked-button>+</button>
   </div>
   <div class="product-details">
     <div class="product-name">
