@@ -1,1 +1,2 @@
-export * from './lib/interfaces-cart.module';
+
+export * from './lib/cart.interface';
