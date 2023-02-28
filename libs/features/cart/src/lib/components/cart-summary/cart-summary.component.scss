@@ -10,3 +10,12 @@ td, th{
 th{
   font-weight: 600;
 }
+
+.delete-btn{
+  color: red;
+}
+
+.delete-btn:hover{
+  color: white;
+  background-color: red;
+}
