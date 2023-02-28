@@ -57,5 +57,15 @@ export class CartService {
   updateCart(updatedCart:ICart[]){
     this._cartSrc$$.next(updatedCart);
   }
+
+  clearItemFromCart(item:IProduct){
+    const currentCart = this._cartSrc$$.value;
+    const updatedCart:ICart[] = currentCart.filter(c=> c.product.id !== item.id);
+    this.updateCart(updatedCart);
+  }
+
+  clearCart(){
+    this.updateCart([]);
+  }
   
 }
