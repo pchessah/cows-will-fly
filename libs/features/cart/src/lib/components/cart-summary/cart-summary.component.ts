@@ -26,8 +26,8 @@ export class CartSummaryComponent implements OnInit {
         this._cartService.getCart().subscribe(cart => this.dataSource = cart);
   }
 
-  removeItemFromCart(item:IProduct){
-    this._cartService.removeItemFromCart(item);
+  clearItemFromCart(item:IProduct){
+    this._cartService.clearItemFromCart(item);
   }
 
   ngOnDestroy(){
