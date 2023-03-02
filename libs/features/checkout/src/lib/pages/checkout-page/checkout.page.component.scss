@@ -2,3 +2,25 @@ img{
   width: 400px;
   height: 500px;
 }
+
+@media only screen and (max-width: 600px) {
+  .cart{
+    width: 90vw;
+    height: unset;
+  }
+}
+
+.cart {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  margin: 25px 5px;
+  width: 300px;
+  max-height: 70vh;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: start;
+}
