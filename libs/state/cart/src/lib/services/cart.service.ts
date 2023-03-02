@@ -54,6 +54,16 @@ export class CartService {
     return this._cart$.pipe(map(cart => cart.length))
   }
 
+  getCartTotal(){
+    return this._cart$.pipe(map(cart =>{
+      return cart.map(c => {
+        const count = c.count;
+        const price = c.product.price;
+        return count*price;
+      }).reduce((a,b) => a+b, 0)
+    }))
+  }
+
   updateCart(updatedCart:ICart[]){
     this._cartSrc$$.next(updatedCart);
   }
