@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { map }   from "rxjs";
+import { combineLatest, map }   from "rxjs";
 import { Router }            from "@angular/router";
 import { CartService }       from "@cows-will-fly/state/cart";
 import { SubSink } from "subsink";
@@ -14,15 +14,20 @@ export class CheckOutPageComponent implements OnInit {
   private _sbS = new SubSink()
   orderIsPending: boolean = true;
   noItemsInCart: boolean = false;
+  total: number = 0;
 
   constructor(private _router: Router, private _cartService: CartService) {}
 
   ngOnInit() {
+    const cartNumber$ = this._cartService.getCartNumber();
+    const cartTotal$ = this._cartService.getCartTotal();
     this._sbS.sink = 
-        this._cartService.getCartNumber().pipe(map(n =>  n === 0 )).subscribe(bool =>{
-          this.noItemsInCart = bool;
+        combineLatest([cartNumber$, cartTotal$]).subscribe(([cartNumber, cartTotal]) =>{
+          this.noItemsInCart = cartNumber === 0;
+          this.total = cartTotal
         });
   }
+  
   goToHome() {
     this._router.navigateByUrl("/");
   }
