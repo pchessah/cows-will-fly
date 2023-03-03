@@ -13,8 +13,10 @@ img{
 .cart {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   margin: 25px 5px;
-  width: 300px;
+  width: 600px;
   max-height: 70vh;
+  padding: 10px;
+  align-self: flex-start;
 }
 
 .page {
@@ -22,5 +24,23 @@ img{
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
-  align-items: start;
+  align-items: flex-end;
+}
+
+hr{
+  width: 100%;
+}
+
+.subtototal{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.subtotal-text{
+  margin-right: 5px;
+}
+
+.cart-summary-title{
+  text-align: center;
 }
