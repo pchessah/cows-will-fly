@@ -7,7 +7,14 @@
     </div>
   
     <div class="cart">
-      <app-cart-summary [isSingleProductPage]="true"></app-cart-summary>
+      <h4 class="cart-summary-title">Cart Summary</h4>
+      <app-cart-summary [isCheckOutPage]="true"></app-cart-summary>
+      <hr>
+
+      <section  *ngIf="total>0" class="subtototal">
+        <span class="subtotal-text"> Subtotal: </span>
+        <h4>Ksh. {{total}}</h4>
+      </section>
     </div>
 </div>
 
