@@ -11,6 +11,7 @@ import { AngularFireModule } from "@angular/fire/compat";
 import { FeaturesHomeModule} from '@cows-will-fly/features/home';
 import { StateProductsModule } from '@cows-will-fly/state/products';
 import { StateCartModule } from '@cows-will-fly/state/cart';
+import { StateCheckoutModule } from '@cows-will-fly/state/checkout';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from '../routes/app.routing.module';
@@ -30,6 +31,7 @@ import { environemnt } from '../environments/environment';
     AngularFirestoreModule.enablePersistence(),
     AngularFireStorageModule,
     AngularFireAuthModule,
+    StateCheckoutModule.forRoot(),
     StateProductsModule.forRoot(),
     StateCartModule.forRoot()
    ],
