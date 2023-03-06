@@ -1,1 +1,1 @@
-export * from './lib/interfaces-user.module';
+export * from './lib/user-details.interface';
