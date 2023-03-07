@@ -13,6 +13,7 @@ export class CheckoutStateService {
 
   constructor(private _afs:AngularFirestore) { }
 
+  //TODO: ADD WAY TO CATCH ERRORS
   createOrder(cart:ICart[], userDetails:IUserDetails){
     const id = this._afs.createId();
     const order: IOrder = {
@@ -20,7 +21,10 @@ export class CheckoutStateService {
       user:userDetails,
       id: id
     }
-    return from(this._afs.doc(`orders/${id}`).set(order));
+    const prom$ = this._afs.doc(`orders/${id}`).set(order).then((res)=> {
+  
+    })
+    return from(prom$);
   }
   
 }

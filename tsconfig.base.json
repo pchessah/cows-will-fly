@@ -36,6 +36,9 @@
       "@cows-will-fly/interfaces/user": ["libs/interfaces/user/src/index.ts"],
       "@cows-will-fly/state/cart": ["libs/state/cart/src/index.ts"],
       "@cows-will-fly/state/checkout": ["libs/state/checkout/src/index.ts"],
+      "@cows-will-fly/state/local-storage": [
+        "libs/state/local-storage/src/index.ts"
+      ],
       "@cows-will-fly/state/products": ["libs/state/products/src/index.ts"]
     }
   },

@@ -17,7 +17,7 @@ import { ICart }                from "@cows-will-fly/interfaces/cart";
 
 export class CheckOutPageComponent implements OnInit {
   private _sbS = new SubSink()
-  
+
   orderIsPending: boolean = true;
   noItemsInCart: boolean = false;
   total: number = 0;
@@ -49,8 +49,9 @@ export class CheckOutPageComponent implements OnInit {
   
   placeOrder(userDetailsFormVal:IUserDetails){
     this._sbS.sink = 
-        this._checkOutService.createOrder(this.cart, userDetailsFormVal).subscribe(res =>{
-          debugger
+        this._checkOutService.createOrder(this.cart, userDetailsFormVal).subscribe(res => {
+          this.orderIsPending = false;
+          this._cartService.clearCart();
         })
     }
   ngOnDestroy(){

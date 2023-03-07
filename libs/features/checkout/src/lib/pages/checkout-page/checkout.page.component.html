@@ -2,7 +2,7 @@
 <div class="page" *ngIf="!noItemsInCart; else noItemsTemplate">
     <div class="card">
       <ng-container *ngIf="orderIsPending else orderPlaced">
-        <app-checkout-form (orderPlacedEvent)="orderIsPending = true; placeOrder($event)"></app-checkout-form>
+        <app-checkout-form (orderPlacedEvent)="placeOrder($event)"></app-checkout-form>
       </ng-container>
     </div>
   
