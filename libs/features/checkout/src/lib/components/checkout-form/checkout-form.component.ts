@@ -17,7 +17,7 @@ export class CheckoutFormComponent implements OnInit {
   constructor(private _fb:FormBuilder) { 
     this.checkoutForm = this._fb.group({
       email: ['' , [Validators.email, Validators.required]],
-      phone: ['' , [ Validators.required, Validators.minLength(10), Validators.maxLength(13)]]
+      phone: ['' , [ Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
     });
   }
 
@@ -25,5 +25,9 @@ export class CheckoutFormComponent implements OnInit {
 
   onSubmit(checkoutForm:FormGroup){
     this.orderPlacedEvent.emit(checkoutForm.value);
+  }
+
+  check(val:string){
+    return this.checkoutForm.get(val)?.invalid;
   }
 }
