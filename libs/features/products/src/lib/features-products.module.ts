@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { AngularMaterialModule } from "@cows-will-fly/elements/external";
+import { FormsModule } from "@angular/forms";
 import { ElementsCommonUiModule } from "@cows-will-fly/elements/common-ui";
 import { FeaturesCartModule } from "@cows-will-fly/features/cart";
 import { ProductCardComponent } from "./components/product-card/product-card.component";
@@ -14,6 +15,7 @@ import { SingleProductPageComponent } from "./pages/single-product-page/single-p
     ProductsRoutingModule,
     AngularMaterialModule,
     ElementsCommonUiModule,
+    FormsModule,
     FeaturesCartModule,
   ],
   declarations: [

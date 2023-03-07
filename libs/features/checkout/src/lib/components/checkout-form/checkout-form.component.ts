@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IUserDetails } from '@cows-will-fly/interfaces/user';
 
 @Component({
   selector: 'app-checkout-form',
@@ -9,21 +10,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 export class CheckoutFormComponent implements OnInit {
 
-  @Output()orderPlacedEvent: EventEmitter<boolean> = new EventEmitter();
+  @Output()orderPlacedEvent: EventEmitter<IUserDetails> = new EventEmitter();
 
   checkoutForm: FormGroup;
  
   constructor(private _fb:FormBuilder) { 
     this.checkoutForm = this._fb.group({
       email: ['' , [Validators.email, Validators.required]],
-      phone: ['' , [ Validators.required]]
+      phone: ['' , [ Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
     });
   }
 
   ngOnInit() { }
 
-  onSubmit(checkoutForm:any){
-    this.orderPlacedEvent.emit(true);
-  
+  onSubmit(checkoutForm:FormGroup){
+    this.orderPlacedEvent.emit(checkoutForm.value);
+  }
+
+  check(val:string){
+    return this.checkoutForm.get(val)?.invalid;
   }
 }

@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
+import { SubSink } from 'subsink';
+import { CartService } from '@cows-will-fly/state/cart';
 
 @Component({
   selector: 'app-cart-page',
@@ -7,23 +10,34 @@ import { Router } from '@angular/router';
   styleUrls:['cart.page.component.scss']
 })
 
-export class CartPageComponent implements OnInit {
+export class CartPageComponent implements OnInit, OnDestroy {
 
+  private _sbS = new SubSink();
   noItemsInCart: boolean = false;
 
-  constructor(private _router:Router) { }
+  constructor(private _router:Router,
+              private _cartService:CartService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this._sbS.sink = 
+      this._cartService.getCartNumber().pipe(map(n =>  n === 0 )).subscribe(bool =>{
+        this.noItemsInCart = bool;
+      });
+  }
 
   goToProducts(){
     this._router.navigateByUrl('/products');
   }
 
   clearCart(){
-    this.noItemsInCart = true;
+    this._cartService.clearCart();
   }
 
   goToCheckout(){
     this._router.navigateByUrl('/checkout');
+  }
+
+  ngOnDestroy(){
+    this._sbS.unsubscribe();
   }
 }

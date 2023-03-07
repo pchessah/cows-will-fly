@@ -23,7 +23,9 @@
     "@nrwl/angular": "15.6.3",
     "@nrwl/cli": "^15.6.3",
     "firebase": "^9.17.1",
+    "lodash": "^4.17.21",
     "rxjs": "~7.5.0",
+    "subsink": "^1.0.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
@@ -42,6 +44,7 @@
     "@nrwl/nx-cloud": "latest",
     "@nrwl/workspace": "15.6.3",
     "@types/jest": "28.1.1",
+    "@types/lodash": "^4.14.191",
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",

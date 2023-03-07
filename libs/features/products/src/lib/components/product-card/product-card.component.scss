@@ -41,6 +41,7 @@
 
 .product-count{
   width: 45px;
+  padding-left: 12px;
 }
 
 .remove-btn{
@@ -49,4 +50,8 @@
 
 .add-btn{
   border-color: green !important;
+}
+
+input{
+  text-align: center;
 }

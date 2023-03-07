@@ -4,5 +4,18 @@ table{
 }
 
 td, th{
-  text-align: center  ;
+  text-align: center;
+}
+
+th{
+  font-weight: 600;
+}
+
+.delete-btn{
+  color: red;
+}
+
+.delete-btn:hover{
+  color: white;
+  background-color: red;
 }

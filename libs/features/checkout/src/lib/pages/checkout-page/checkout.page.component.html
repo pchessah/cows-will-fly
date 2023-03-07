@@ -1,13 +1,33 @@
 <app-navbar></app-navbar>
-<div class="page">
-  <div class="card">
-    <ng-container *ngIf="orderIsPending else orderPlaced">
-      <app-checkout-form (orderPlacedEvent)="orderIsPending = true"></app-checkout-form>
-    </ng-container>
-  </div>
+<div class="page" *ngIf="!noItemsInCart; else noItemsTemplate">
+    <div class="card">
+      <ng-container *ngIf="orderIsPending else orderPlaced">
+        <app-checkout-form (orderPlacedEvent)="placeOrder($event)"></app-checkout-form>
+      </ng-container>
+    </div>
+  
+    <div class="cart">
+      <h4 class="cart-summary-title">Cart Summary</h4>
+      <app-cart-summary [isCheckOutPage]="true"></app-cart-summary>
+      <hr>
+
+      <section  *ngIf="total>0" class="subtototal">
+        <span class="subtotal-text"> Subtotal: </span>
+        <h4>Ksh. {{total}}</h4>
+      </section>
+    </div>
 </div>
 
 <ng-template #orderPlaced>
   <img src="assets/order-confirmed.svg" alt="Order confirmed" />
-  <button (click)="goToHome()" mat-stroked-button color="primary">Go home</button>
+  <button (click)="goToHome()" mat-raised-button color="primary">Go home</button>
+</ng-template>
+
+
+<ng-template #noItemsTemplate>
+  <div class="page">
+    <span class="title">No Items in Cart</span>
+    <img src="assets/no-cart.svg" alt="no-items-in-cart"/>
+    <button (click)="goToProducts()" mat-raised-button color="primary">Go To Products</button>
+  </div>
 </ng-template>
