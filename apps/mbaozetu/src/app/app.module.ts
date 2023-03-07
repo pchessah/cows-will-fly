@@ -9,9 +9,11 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireModule } from "@angular/fire/compat";
 
 import { FeaturesHomeModule} from '@cows-will-fly/features/home';
+
 import { StateProductsModule } from '@cows-will-fly/state/products';
 import { StateCartModule } from '@cows-will-fly/state/cart';
 import { StateCheckoutModule } from '@cows-will-fly/state/checkout';
+import { StateLocalStorageModule } from "@cows-will-fly/state/local-storage";
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from '../routes/app.routing.module';
@@ -33,7 +35,8 @@ import { environemnt } from '../environments/environment';
     AngularFireAuthModule,
     StateCheckoutModule.forRoot(),
     StateProductsModule.forRoot(),
-    StateCartModule.forRoot()
+    StateCartModule.forRoot(),
+    StateLocalStorageModule.forRoot()
    ],
   providers: [],
   bootstrap: [AppComponent],

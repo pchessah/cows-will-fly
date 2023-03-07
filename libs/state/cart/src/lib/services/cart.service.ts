@@ -1,20 +1,31 @@
-import { Injectable } from '@angular/core';
+import { Injectable }                   from '@angular/core';
 import { BehaviorSubject, filter, map } from 'rxjs';
-import {cloneDeep  as __CloneDeep} from 'lodash';
+import {cloneDeep  as __CloneDeep}      from 'lodash';
 
-import {ICart } from '@cows-will-fly/interfaces/cart';
-import { IProduct } from '@cows-will-fly/interfaces/product';
+import {ICart }                         from '@cows-will-fly/interfaces/cart';
+import { IProduct }                     from '@cows-will-fly/interfaces/product';
+import { LocalStorageService }          from '@cows-will-fly/state/local-storage';
 
 @Injectable({providedIn: 'root'})
+
 export class CartService {
 
   private _cartSrc$$ = new BehaviorSubject<ICart[]>([]);
   private _cart$ =  this._cartSrc$$.asObservable();
   
-  constructor() { }
+  constructor(private _localSorageService: LocalStorageService) { 
+    this._initializeData();
+  }
 
   getCart(){
     return this._cart$.pipe(filter(res => !!res));
+  }
+
+  private _initializeData(){
+    const data:ICart[] = JSON.parse(this._localSorageService.getData('cart') as string);
+    if(data){
+      this.updateCart(data);
+    }
   }
 
   addItemToCart(item: IProduct){
@@ -65,6 +76,8 @@ export class CartService {
   }
 
   updateCart(updatedCart:ICart[]){
+    this._localSorageService.removeData("cart");
+    this._localSorageService.saveData("cart", JSON.stringify(updatedCart));
     this._cartSrc$$.next(updatedCart);
   }
 
