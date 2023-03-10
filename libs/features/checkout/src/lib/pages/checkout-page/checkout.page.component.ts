@@ -22,6 +22,7 @@ export class CheckOutPageComponent implements OnInit {
   noItemsInCart: boolean = false;
   total: number = 0;
   cart: ICart[] = [];
+  isSaving:boolean = false;
 
   constructor(private _router: Router,
               private _checkOutService: CheckoutStateService,
@@ -46,12 +47,13 @@ export class CheckOutPageComponent implements OnInit {
     this._router.navigateByUrl('/products');
   }
 
-  
   placeOrder(userDetailsFormVal:IUserDetails){
+    this.isSaving = true;
     this._sbS.sink = 
         this._checkOutService.createOrder(this.cart, userDetailsFormVal).subscribe(res => {
           this.orderIsPending = false;
           this._cartService.clearCart();
+          this.isSaving = false;
         })
     }
   ngOnDestroy(){

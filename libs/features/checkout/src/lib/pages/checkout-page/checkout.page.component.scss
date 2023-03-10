@@ -44,3 +44,12 @@ hr{
 .cart-summary-title{
   text-align: center;
 }
+
+.center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  width: 90vw;
+}

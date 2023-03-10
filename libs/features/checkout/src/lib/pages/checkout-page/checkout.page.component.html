@@ -2,7 +2,7 @@
 <div class="page" *ngIf="!noItemsInCart; else noItemsTemplate">
     <div class="card">
       <ng-container *ngIf="orderIsPending else orderPlaced">
-        <app-checkout-form (orderPlacedEvent)="placeOrder($event)"></app-checkout-form>
+        <app-checkout-form [isSaving]="isSaving" (orderPlacedEvent)="placeOrder($event)"></app-checkout-form>
       </ng-container>
     </div>
   
@@ -19,13 +19,15 @@
 </div>
 
 <ng-template #orderPlaced>
-  <img src="assets/order-confirmed.svg" alt="Order confirmed" />
-  <button (click)="goToHome()" mat-raised-button color="primary">Go home</button>
+  <div class="center">
+    <img src="assets/order-confirmed.svg" alt="Order confirmed" />
+    <button (click)="goToHome()" mat-raised-button color="primary">Go home</button>
+  </div>
 </ng-template>
 
 
 <ng-template #noItemsTemplate>
-  <div class="page">
+  <div class="page center" *ngIf="orderIsPending else orderPlaced">
     <span class="title">No Items in Cart</span>
     <img src="assets/no-cart.svg" alt="no-items-in-cart"/>
     <button (click)="goToProducts()" mat-raised-button color="primary">Go To Products</button>

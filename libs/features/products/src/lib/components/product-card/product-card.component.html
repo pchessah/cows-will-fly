@@ -1,5 +1,5 @@
 <div class="card">
-  <img class="product-img"
+  <img (click)="goToProduct()" class="product-img"
     [src]="product.imageUrl"
     alt="product-img" />
   <div class="actions">
@@ -7,7 +7,7 @@
     <input title="number" (change)="onChangeValue($event)" [(ngModel)]="productCountInCart" type="number" class="product-count" />
     <button (click)="addItemToCart(product)" color="primary" class="add-btn" mat-stroked-button>+</button>
   </div>
-  <div class="product-details">
+  <div  (click)="goToProduct()" class="product-details">
     <div class="product-name">
       {{product.name}}
     </div>
