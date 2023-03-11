@@ -1,4 +1,5 @@
 import { Injectable }                   from '@angular/core';
+import { MatSnackBar }                  from '@angular/material/snack-bar';
 import { BehaviorSubject, filter, map } from 'rxjs';
 import {cloneDeep  as __CloneDeep}      from 'lodash';
 
@@ -13,7 +14,8 @@ export class CartService {
   private _cartSrc$$ = new BehaviorSubject<ICart[]>([]);
   private _cart$ =  this._cartSrc$$.asObservable();
   
-  constructor(private _localSorageService: LocalStorageService) { 
+  constructor(private _localSorageService: LocalStorageService,
+              private _snackBar: MatSnackBar) { 
     this._initializeData();
   }
 
@@ -42,6 +44,14 @@ export class CartService {
       updatedCart = [...currentCart, cartItem]
    }
    this.updateCart(updatedCart);
+   this.openSnackBar(`✅ ${item.name} added to cart.`)
+  }
+
+  openSnackBar(message:string){
+    this._snackBar.open(message, '', {
+      duration: 3000,
+      verticalPosition: 'top'
+    })
   }
 
   removeItemFromCart(item: IProduct){
@@ -58,6 +68,7 @@ export class CartService {
         updatedCart = currentCart.filter(c => c.product.id !== item.id);
       }
       this.updateCart(updatedCart);
+      this.openSnackBar(`❌ 1 ${item.name} removed from cart.`)
     } 
   }
 
@@ -85,10 +96,13 @@ export class CartService {
     const currentCart = this._cartSrc$$.value;
     const updatedCart:ICart[] = currentCart.filter(c=> c.product.id !== item.id);
     this.updateCart(updatedCart);
+    this.openSnackBar(`❌ ${item.name} removed from cart.`)
+
   }
 
   clearCart(){
     this.updateCart([]);
+    this.openSnackBar(`🔥 Cart has been cleared.`)
   }
   
 }
