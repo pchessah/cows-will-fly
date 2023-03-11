@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve mbaozetu",
-    "build": "nx build mbaozetu"
+    "build": "nx build mbaozetu",
+    "deploy": "firebase deploy --only hosting:mbao-zetu"
   },
   "private": true,
   "dependencies": {

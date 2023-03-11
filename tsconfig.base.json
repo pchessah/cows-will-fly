@@ -21,6 +21,7 @@
       "@cows-will-fly/elements/external": [
         "libs/elements/external/src/index.ts"
       ],
+      "@cows-will-fly/features/auth": ["libs/features/auth/src/index.ts"],
       "@cows-will-fly/features/cart": ["libs/features/cart/src/index.ts"],
       "@cows-will-fly/features/checkout": [
         "libs/features/checkout/src/index.ts"
