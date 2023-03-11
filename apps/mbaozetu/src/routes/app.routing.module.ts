@@ -39,6 +39,14 @@ const routes: Routes = [
       ).then((m) => m.FeaturesCheckoutModule),
   },
 
+  //Auth module
+  {
+    path:"auth",
+    loadChildren: ()=>
+      import("../../../../libs/features/auth/src/lib/features-auth.module"
+      ).then((m)=> m.FeaturesAuthModule)
+  },
+
   { path: "", redirectTo: "/home", pathMatch: "full" }, //Home route
 
   { path: "**", component:Error404Component } //Error404 Route
