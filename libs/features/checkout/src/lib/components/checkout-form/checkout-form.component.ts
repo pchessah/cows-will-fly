@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, 
+         OnInit, Output, SimpleChanges }      from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { IUserDetails } from '@cows-will-fly/interfaces/user';
+import { Router }                             from '@angular/router';
+import { IUserDetails }                       from '@cows-will-fly/interfaces/user';
 
 @Component({
   selector: 'app-checkout-form',
@@ -20,7 +21,7 @@ export class CheckoutFormComponent implements OnInit {
     this.checkoutForm = this._fb.group({
       name:['', Validators.required],
       email: ['' , [Validators.email, Validators.required]],
-      phone: ['' , [ Validators.required]]
+      phone: ['' , [ Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
     });
   }
 

@@ -4,24 +4,27 @@
 
     <mat-form-field appearance="outline">
       <input matInput placeholder="Enter your name" formControlName="name" required />
+     
       <mat-error *ngIf="check('name')">Name is invalid</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <input matInput placeholder="Enter your email" formControlName="email" required />
+
       <mat-error *ngIf="check('email')">Email is invalid</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <input formControlName="phone" matInput type="number" placeholder="Enter your phone number" />
+      <input formControlName="phone" matInput type="tel" placeholder="Enter your phone number" />
+     
       <mat-error *ngIf="check('phone')">phone number is invalid</mat-error>
     </mat-form-field>
 
     <div class="form-footer">
       <button (click)="goBack()" type="reset" mat-stroked-button color="warn">Back</button>
-      <button [disabled]="checkoutForm.invalid || isSaving" type="submit" mat-raised-button color="primary">
-        Complete Checkout
-        <ng-container *ngIf="isSaving">  <span class="loader"></span></ng-container>
+      <button class="submit-btn" [disabled]="checkoutForm.invalid || isSaving" type="submit" mat-raised-button color="primary">
+       <span>Complete Checkout</span>
+       <ng-container *ngIf="isSaving">  <span class="loader"></span></ng-container>
       </button>
       
     </div>
