@@ -37,6 +37,7 @@ export class CheckoutFormComponent implements OnInit {
           if(u){
             const name = this._authService.getNameFromEmail(u.email as string);
             const email = u.email;
+            const id = u.uid;
             this.checkoutForm.controls['email'].setValue(email);
             this.checkoutForm.controls['name'].setValue(name);
           }

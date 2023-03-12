@@ -1,12 +1,10 @@
 import { Router }               from "@angular/router";
 import { Component, OnInit }    from "@angular/core";
-
 import { combineLatest }        from "rxjs";
 import { SubSink }              from "subsink";
-
 import { CartService }          from "@cows-will-fly/state/cart";
-import {IUserDetails }          from "@cows-will-fly/interfaces/user";
-import {CheckoutStateService}   from "@cows-will-fly/state/checkout";
+import { IUserDetails }         from "@cows-will-fly/interfaces/user";
+import { CheckoutStateService}  from "@cows-will-fly/state/checkout";
 import { ICart }                from "@cows-will-fly/interfaces/cart";
 
 @Component({

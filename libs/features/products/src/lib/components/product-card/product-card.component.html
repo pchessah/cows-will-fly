@@ -1,7 +1,8 @@
 <div class="card">
-  <img (click)="goToProduct()" class="product-img"
-    [src]="product.imageUrl"
-    alt="product-img" />
+  <img  class="product-img"
+        alt="product-img"
+        [src]="product.imageUrl"
+       (click)="goToProduct()"/>
   <div class="actions">
     <button (click)="removeItemFromCart(product)" color="warn" class="remove-btn" mat-stroked-button>-</button>
     <input title="number" (change)="onChangeValue($event)" [(ngModel)]="productCountInCart" type="number" class="product-count" />

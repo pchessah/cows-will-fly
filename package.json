@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve mbaozetu",
+    "start-dashboard": "nx serve mbaozetu-dashboard",
     "build": "nx build mbaozetu",
     "deploy": "firebase deploy --only hosting:mbao-zetu"
   },
