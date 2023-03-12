@@ -1,1 +1,45 @@
-sign up
+<app-navbar></app-navbar>
+<div class="page">
+  <mat-card>
+    <mat-card-title>Sign Up</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="signupForm" (ngSubmit)="submit()">
+        <p>
+          <mat-form-field appearance="outline">
+            <input type="email" matInput placeholder="email" formControlName="email">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="outline">
+            <input type="password" matInput placeholder="Password" formControlName="password">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="outline">
+            <input type="password" matInput placeholder="Confirm Password" formControlName="password2">
+          </mat-form-field>
+        </p>
+
+        <div class="button-container">
+          <button color="primary" type="submit" mat-raised-button>Sign Up</button>
+        </div>
+
+        <span class="sign-up-text">Have an Account?
+          <span class="sign-up-link">
+            Log in here
+          </span>
+        </span>
+        <br>
+
+        <span class="forgot-pwd-text">Forgot password?
+          <span class="forgot-pwd-link">
+            reset password here
+          </span>
+        </span>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
