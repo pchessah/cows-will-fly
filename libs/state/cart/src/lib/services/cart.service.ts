@@ -1,9 +1,8 @@
 import { Injectable }                   from '@angular/core';
 import { MatSnackBar }                  from '@angular/material/snack-bar';
 import { BehaviorSubject, filter, map } from 'rxjs';
-import {cloneDeep  as __CloneDeep}      from 'lodash';
-
-import {ICart }                         from '@cows-will-fly/interfaces/cart';
+import { cloneDeep  as __CloneDeep }    from 'lodash';
+import { ICart }                        from '@cows-will-fly/interfaces/cart';
 import { IProduct }                     from '@cows-will-fly/interfaces/product';
 import { LocalStorageService }          from '@cows-will-fly/state/local-storage';
 
@@ -73,7 +72,7 @@ export class CartService {
   }
 
   getCartNumber(){
-    return this._cart$.pipe(map(cart => cart.length))
+    return this._cart$.pipe(map(cart => cart.length), filter(res => !!res))
   }
 
   getCartTotal(){
@@ -83,7 +82,7 @@ export class CartService {
         const price = c.product.price;
         return count*price;
       }).reduce((a,b) => a+b, 0)
-    }))
+    }),  filter(res => !!res))
   }
 
   updateCart(updatedCart:ICart[]){
