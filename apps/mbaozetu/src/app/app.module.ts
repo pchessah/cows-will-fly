@@ -13,6 +13,7 @@ import { StateProductsModule }       from '@cows-will-fly/state/products';
 import { StateCartModule }           from '@cows-will-fly/state/cart';
 import { StateCheckoutModule }       from '@cows-will-fly/state/checkout';
 import { StateLocalStorageModule }   from "@cows-will-fly/state/local-storage";
+import { StateAuthModule }           from "@cows-will-fly/state/auth";
 
 import { AppComponent }              from './app.component';
 import { AppRoutingModule }          from '../routes/app.routing.module';
@@ -36,7 +37,8 @@ import { environemnt }               from '../environments/environment';
     StateCheckoutModule.forRoot(),
     StateProductsModule.forRoot(),
     StateCartModule.forRoot(),
-    StateLocalStorageModule.forRoot()
+    StateLocalStorageModule.forRoot(),
+    StateAuthModule.forRoot()
    ],
   providers: [],
   bootstrap: [AppComponent],
