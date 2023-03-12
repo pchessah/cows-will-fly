@@ -16,7 +16,6 @@ export class LogInComponent implements OnInit {
       email: ['' , [Validators.email, Validators.required]],
       password: ['' , [ Validators.required]]
     })
-
   }
 
   ngOnInit() { }
