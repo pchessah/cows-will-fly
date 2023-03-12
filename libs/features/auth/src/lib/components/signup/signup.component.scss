@@ -50,6 +50,11 @@ mat-card-title{
   margin-top: 5px;
 }
 
+.password-error{
+  font-size: 8px;
+  color: red;
+}
+
 @media screen and (max-width: 600px) {
   mat-card{
     padding: 40px 20px;
