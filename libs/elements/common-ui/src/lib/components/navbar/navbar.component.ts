@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable, map } from 'rxjs';
+import { Router }            from '@angular/router';
+import { Observable, map }   from 'rxjs';
 
-import { CartService } from '@cows-will-fly/state/cart';
+import { CartService }       from '@cows-will-fly/state/cart';
 
 @Component({
   selector: 'app-navbar',
