@@ -3,6 +3,8 @@ import { Component, EventEmitter, Input,
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router }                             from '@angular/router';
 import { IUserDetails }                       from '@cows-will-fly/interfaces/user';
+import { AuthService }                        from '@cows-will-fly/state/auth';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-checkout-form',
@@ -12,12 +14,16 @@ import { IUserDetails }                       from '@cows-will-fly/interfaces/us
 
 export class CheckoutFormComponent implements OnInit {
 
+  private _sbS = new SubSink();
+
   @Input() isSaving:boolean = false;
   @Output() orderPlacedEvent: EventEmitter<IUserDetails> = new EventEmitter();
 
   checkoutForm: FormGroup;
  
-  constructor(private _fb:FormBuilder, private _router:Router) { 
+  constructor(private _fb:FormBuilder,
+              private _router:Router,
+              private _authService: AuthService) { 
     this.checkoutForm = this._fb.group({
       name:['', Validators.required],
       email: ['' , [Validators.email, Validators.required]],
@@ -25,7 +31,17 @@ export class CheckoutFormComponent implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this._sbS.sink = 
+        this._authService.getLoggedInUser().subscribe(u => {
+          if(u){
+            const name = this._authService.getNameFromEmail(u.email as string);
+            const email = u.email;
+            this.checkoutForm.controls['email'].setValue(email);
+            this.checkoutForm.controls['name'].setValue(name);
+          }
+        })
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if(changes['isSaving']){
