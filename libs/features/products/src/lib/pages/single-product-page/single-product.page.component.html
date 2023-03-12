@@ -2,8 +2,9 @@
 <div class="page" *ngIf="singleProduct$ | async as product; else loading">
   <div class="card">
     <img class="product-img"
-      [src]="product.imageUrl"
-      alt="product-img" />
+         priority="true"
+         [src]="product.imageUrl"
+         alt="product-img" />
     <div class="actions">
       <button (click)="removeItemFromCart(product)" color="warn" class="remove-btn" mat-stroked-button>-</button>
       <input  (change)="onChangeValue($event)" [(ngModel)]="productCountInCart" title="number" type="number" class="product-count" />
