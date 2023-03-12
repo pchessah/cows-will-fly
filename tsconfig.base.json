@@ -35,6 +35,7 @@
         "libs/interfaces/product/src/index.ts"
       ],
       "@cows-will-fly/interfaces/user": ["libs/interfaces/user/src/index.ts"],
+      "@cows-will-fly/state/auth": ["libs/state/auth/src/index.ts"],
       "@cows-will-fly/state/cart": ["libs/state/cart/src/index.ts"],
       "@cows-will-fly/state/checkout": ["libs/state/checkout/src/index.ts"],
       "@cows-will-fly/state/local-storage": [
