@@ -23,11 +23,15 @@
     <div class="form-footer">
       <button (click)="goBack()" type="reset" mat-stroked-button color="warn">Back</button>
       <button class="submit-btn" [disabled]="checkoutForm.invalid || isSaving" type="submit" mat-raised-button color="primary">
-       <span>Complete Checkout</span>
-       <ng-container *ngIf="isSaving">  <span class="loader"></span></ng-container>
+       <span *ngIf="!isSaving; else loading">Complete Checkout</span>
       </button>
       
     </div>
 
   </form>
 </div>
+
+
+<ng-template #loading>
+  <mat-spinner [diameter]="15"></mat-spinner>
+</ng-template>

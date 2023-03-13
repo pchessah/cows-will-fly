@@ -17,7 +17,7 @@
         </p>
 
         <div class="button-container">
-          <button color="primary" type="submit" mat-raised-button>
+          <button [disabled]="!loginForm.valid || isLoading" color="primary" type="submit" mat-raised-button>
             <ng-container *ngIf="!isLoading; else loading">
               Login
             </ng-container>

@@ -28,7 +28,6 @@ export class SignUpComponent implements OnInit, OnDestroy{
     })
   }
 
-
   ngOnInit() { 
     this._sbS.sink = 
         this.signupForm.valueChanges.subscribe(val =>{
