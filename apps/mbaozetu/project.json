@@ -17,7 +17,10 @@
         "inlineStyleLanguage": "scss",
         "assets": ["apps/mbaozetu/src/favicon.ico", "apps/mbaozetu/src/assets"],
         "styles": ["apps/mbaozetu/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "allowedCommonJsDependencies": [
+          "lodash", "crypto-js"
+       ]
       },
       "configurations": {
         "production": {
