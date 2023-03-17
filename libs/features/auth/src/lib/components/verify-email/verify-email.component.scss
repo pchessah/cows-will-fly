@@ -1,0 +1,78 @@
+mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  display: flex;
+  width: 100%;
+}
+strong{
+  font-weight: 600;
+}
+p{
+  text-align: center;
+}
+
+mat-card{
+  padding: 40px 20px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-card-title{
+  font-family: 'Explora', cursive;
+  font-size: 40px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-weight: 900;
+}
+
+.button-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.forgot-pwd-link, .sign-up-link{
+  cursor: pointer;
+  text-decoration: underline;
+  color: blue;
+}
+
+.forgot-pwd-link:hover, .sign-up-link:hover{
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.forgot-pwd-text, .sign-up-text{
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.password-error{
+  font-size: 8px;
+  color: red;
+}
+
+@media screen and (max-width: 600px) {
+  mat-card{
+    padding: 40px 20px;
+    width: 350px;
+  }
+}

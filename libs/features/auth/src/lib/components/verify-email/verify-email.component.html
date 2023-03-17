@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<div class="page">
+  <mat-card *ngIf="!isLoading; else loading">
+    <mat-card-title>Verify Email</mat-card-title>
+    <mat-card-content>
+      <h3>Thank You for Registering</h3>
+      <div class="formGroup" *ngIf="!!user">
+        <p class="text-center">We have sent a confirmation email to <strong>{{user.email}}</strong>.</p>
+        <p class="text-center">Please check your email and click on the link to verfiy your email address.</p>
+      </div>
+      <div class="button-container">
+        <button (click)="submit()" [disabled]="isLoading" color="primary" type="submit" mat-raised-button>
+          <ng-container *ngIf="!isLoading; else loading">
+            Resend Verification Email
+          </ng-container>
+        </button>
+      </div>
+
+      <span class="sign-up-text">
+        <span (click)="goToLogin()" class="sign-up-link">
+          Log in here
+        </span>
+      </span>
+      <br>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<ng-template #loading>
+  <mat-spinner [diameter]="25"></mat-spinner>
+</ng-template>
