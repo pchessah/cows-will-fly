@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   width: number = 600;
   isLoggedIn:boolean = false;
   name: string = null as any;
+  emailVerified: boolean = false;
 
   constructor(private _router:Router,
               private _authService: AuthService,
@@ -48,11 +49,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this._router.navigateByUrl('/auth/login');
   }
 
+  goToVerifyEmailAddress(){
+    this._router.navigateByUrl('/auth/verify-email-address');
+  }
+
   getLoggedInUser(){
     this._sbS.sink = 
         this._authService.getLoggedInUser().subscribe(u => {
           if(u?.email){
-            this.name = this._authService.getNameFromEmail(u.email)
+            this.name = this._authService.getNameFromEmail(u.email);
+            this.emailVerified = u.emailVerified;
           }
         })
   }
