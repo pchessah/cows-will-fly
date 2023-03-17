@@ -7,15 +7,19 @@
     <span class="example-spacer"></span>
 
     <ng-container *ngIf="!isMobile">
-      <span class="cart-icon" (click)="name ? logOut() : goToLogin()">
+      <span class="cart-icon" (click)="name ? emailVerified ? logOut() : goToVerifyEmailAddress() : goToLogin()">
         <i class="fa-solid fa-user"></i>
         &nbsp;
         <span class="login-text">
           <ng-container *ngIf="!name">
             Log in
           </ng-container>
-          <ng-container *ngIf="name">
+          <ng-container *ngIf="name && emailVerified">
             {{name}}
+          </ng-container>
+
+          <ng-container *ngIf="name && !emailVerified">
+            Verify email
           </ng-container>
         </span>
       </span>
@@ -52,7 +56,7 @@
           <span class="login-text">Cart</span>
         </span>
 
-        <span mat-menu-item (click)="name ? null : goToLogin()">
+        <span mat-menu-item (click)="name ? emailVerified ? null : goToVerifyEmailAddress() : goToLogin()">
           <span class="cart-icon" >
             <i class="fa-solid fa-user"></i>
             &nbsp;
@@ -60,8 +64,12 @@
               <ng-container *ngIf="!name">
                 Log in
               </ng-container>
-              <ng-container *ngIf="name">
+              <ng-container *ngIf="name && emailVerified">
                 {{name}}
+              </ng-container>
+
+              <ng-container *ngIf="name && !emailVerified">
+                Verify email
               </ng-container>
             </span>
           </span>
