@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
-import { MatSnackBar }       from '@angular/material/snack-bar';
 import { SubSink }           from 'subsink';
 import { AuthService }       from '@cows-will-fly/state/auth';
 
@@ -18,7 +17,6 @@ export class VerifyEmailComponent implements OnInit
   user:any = null as any;
 
   constructor(private _authService:AuthService,
-              private _snackBar:MatSnackBar,
               private _router:Router)
   { }
 
@@ -29,14 +27,8 @@ export class VerifyEmailComponent implements OnInit
   submit(){
     this.isLoading = true
     this._authService.sendVerificationMail().then((val) => {
-      this._snackBar.open("📩 Verification Email Sent", "", {
-        verticalPosition: 'top'
-      });
       this.isLoading = false;
     }).catch(error => {
-      this._snackBar.open("⛔️ There was an error" + error, "", {
-        verticalPosition: 'top'
-      });
       console.error(error);
       this.isLoading = false;
     });
