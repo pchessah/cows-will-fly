@@ -7,11 +7,15 @@ import { SignUpComponent }                  from './components/signup/signup.com
 import { LogInComponent }                   from './components/login/login.component';
 import { ForgotPasswordComponent }          from './components/forgot-password/forgot-password.component';
 import { AuthRoutingModule }                from './auth.routing.module';
+import { VerifyEmailComponent }             from './components/verify-email/verify-email.component';
 
 @NgModule({
   imports: [CommonModule, ElementsExternalModule, AuthRoutingModule,
             ReactiveFormsModule, FormsModule, ElementsCommonUiModule],
-  declarations:[SignUpComponent, LogInComponent, ForgotPasswordComponent],
-  exports:[SignUpComponent, LogInComponent, ForgotPasswordComponent]
+
+  declarations:[SignUpComponent, LogInComponent, ForgotPasswordComponent,
+                VerifyEmailComponent],
+                
+  exports:[], 
 })
 export class FeaturesAuthModule {}
