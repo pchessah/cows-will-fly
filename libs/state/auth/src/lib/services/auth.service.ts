@@ -67,6 +67,7 @@ export class AuthService {
   signUp(email: string, password: string) {
     const signUp$ = this.afAuth.createUserWithEmailAndPassword(email, password)
                         .then((result) => {
+                          this.sendVerificationMail();
                           this.setUserData(result.user)
                           this.openSnackBar('🎉 Signed up Successfully!');
                         })
@@ -83,10 +84,20 @@ export class AuthService {
   
     return defer(() => from(forgotPassword$));
   }
+
+  // Send email verfificaiton when new user sign up
+  sendVerificationMail() {
+      return this.afAuth.currentUser
+        .then((u: any) => u.sendEmailVerification())
+        .then(() => {
+          this.router.navigate(['auth/verify-email-address']);
+        });
+  }
+  
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(this._localStorageService.getData("user")!);
-    return user !== null ? true : false;
+    return user !== null && user.emailVerified !== false ? true : false;
   }
 
   get loggedInUser(){
