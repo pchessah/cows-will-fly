@@ -46,7 +46,6 @@ export class SignUpComponent implements OnInit, OnDestroy{
       this._sbS.sink =
           this._authService.signUp(email, password).subscribe(res =>{
             this.isLoading = false;
-            this.goToLogin();
           });
     }
   }
