@@ -71,7 +71,10 @@ export class AuthService {
                           this.setUserData(result.user)
                           this.openSnackBar('🎉 Signed up Successfully!');
                         })
-                        .catch((error) => console.error(error.message));            
+                        .catch((error) => {
+                          this.openSnackBar('😢 Sign up failed because of '+ error.message)
+                          console.error(error.message);
+                        });            
     return defer(() => from(signUp$));
   }
 
@@ -80,7 +83,7 @@ export class AuthService {
     const forgotPassword$ = this.afAuth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => this.openSnackBar('🔐 Password reset email sent, check your inbox.'))
-      .catch((error) => this.openSnackBar('😢 Password reset failed.'));
+      .catch((error) => this.openSnackBar('😢 Password reset failed because of.' + error.message));
   
     return defer(() => from(forgotPassword$));
   }
@@ -90,7 +93,10 @@ export class AuthService {
       return this.afAuth.currentUser
         .then((u: any) => u.sendEmailVerification())
         .then(() => {
+          this.openSnackBar( "📩 Verification Email Sent");
           this.router.navigate(['auth/verify-email-address']);
+        }).catch(error =>{
+          this.openSnackBar('😢 Verificationfailed because of.' + error.message);
         });
   }
   
