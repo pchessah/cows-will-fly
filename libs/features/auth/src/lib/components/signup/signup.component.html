@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="page">
-  <mat-card>
+  <mat-card *ngIf="!isLoggedIn; else isLoggedInTemplate ">
     <mat-card-title>Sign Up</mat-card-title>
     <mat-card-content>
       <form [formGroup]="signupForm" (ngSubmit)="submit()">
@@ -53,4 +53,16 @@
 
 <ng-template #loading>
   <mat-spinner [diameter]="15"></mat-spinner>
+</ng-template>
+
+<ng-template #isLoggedInTemplate>
+  <mat-card class="logged-in-container">
+    <img src="assets/logged-in.svg" class="logged-in-img" />
+    <span class="logged-in-text">
+      Your are Logged In.
+    </span>
+    <button (click)="logOut()" color="warn" mat-raised-button class="log-out-btn">
+      Log Out
+    </button>
+  </mat-card>
 </ng-template>

@@ -12,7 +12,13 @@ mat-card-content {
 button {
   display: flex;
   width: 100%;
+  font-weight: 900;
 }
+:host ::ng-deep .mdc-button__label {
+  font-size: 25px !important;
+  font-weight: 900;
+}
+
 strong{
   font-weight: 600;
 }
@@ -61,7 +67,7 @@ mat-card-title{
 }
 
 .forgot-pwd-text, .sign-up-text{
-  font-size: 12px;
+  font-size: 24px;
   margin-top: 5px;
 }
 

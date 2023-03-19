@@ -6,13 +6,13 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap-reverse;
-  padding: 10px;
+  padding: 10px 5px;
+  width: 600px;
 }
 
 .title {
-  font-size: 18px;
+  font-size: 35px;
   font-weight: 600;
-  font-family: 'Bitter', serif;
 }
 
 button {
@@ -21,6 +21,7 @@ button {
 
 .action-btn{
   margin: 10px;
+  font-weight: 900;
 }
 
 img {
@@ -30,6 +31,7 @@ img {
 .card {
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
+
 
 @media screen and (max-width: 600px) {
   img {
@@ -42,7 +44,7 @@ img {
   }
 
  .action-btn{
-    width: 100px;
+    width: 310px;
     padding: 5px;
   }
 }

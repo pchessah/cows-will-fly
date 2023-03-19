@@ -53,3 +53,9 @@ hr{
   height: 70vh;
   width: 90vw;
 }
+
+
+:host ::ng-deep .mdc-button__label {
+  font-size: 35px !important;
+  font-weight: 900;
+}

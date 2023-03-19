@@ -46,7 +46,7 @@ mat-card-title{
 }
 
 .forgot-pwd-text, .sign-up-text{
-  font-size: 12px;
+  font-size: 24px;
   margin-top: 5px;
 }
 
@@ -60,4 +60,28 @@ mat-card-title{
     padding: 40px 20px;
     width: 350px;
   }
+}
+
+:host ::ng-deep .mdc-button__label {
+  font-size: 25px !important;
+  font-weight: 900;
+}
+
+.logged-in-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logged-in-img{
+  height: 200px !important;
+}
+
+.log-out-btn:hover{
+  color: red !important;
+  background-color: white !important;
+}
+
+.logged-in-text, .log-out-btn{
+  margin: 10px 0px;
 }

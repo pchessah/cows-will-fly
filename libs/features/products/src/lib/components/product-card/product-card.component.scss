@@ -33,11 +33,11 @@
   height: 65%
 }
 
-.product-name{
-  font-family: 'Bitter', serif;
-  font-size: 18px;
-  font-weight: 500;
+.product-name, .product-price{
+  font-size: 22px;
+  font-weight: 600;
 }
+
 
 .product-count{
   width: 45px;
@@ -54,4 +54,9 @@
 
 input{
   text-align: center;
+}
+
+:host ::ng-deep .mdc-button__label {
+  font-size: 35px !important;
+  font-weight: 600;
 }

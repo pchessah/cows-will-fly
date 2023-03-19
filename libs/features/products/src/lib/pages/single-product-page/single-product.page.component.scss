@@ -41,12 +41,13 @@
 .product-details,
 .product-description {
   padding-top: 0px;
+  font-size: 20px !important;
+  font-weight: 600;
 }
 
-.product-name{
-  font-family: 'Bitter', serif;
-  font-size: 18px;
-  font-weight: 500;
+.product-name, .product-price{
+  font-size: 22px;
+  font-weight: 600;
 }
 
 .product-count{
@@ -55,17 +56,39 @@
 
 .remove-btn{
   border-color: rgb(235, 21, 21) !important;
+  font-size: 25px;
+  font-weight: 600;
 }
 
 .add-btn{
-  border-color: green !important;
+  border-color: rgb(1, 151, 1) !important;
+  font-size: 25px;
+  font-weight: 600;
 }
 
 .product-description{
-  font-style: italic;
-  font-size: 12px;
   flex-direction: column;
   padding-bottom: 10px;
+  margin-top: -10px;
+}
+
+:host ::ng-deep .mdc-button__label {
+  font-size: 35px !important;
+}
+
+.description-title{
+  font-size: 20px;
+  font-weight: 900;
+ 
+}
+
+.description-detail{
+  letter-spacing: 1.5px;
+}
+
+
+input{
+  text-align: center;
 }
 
 
