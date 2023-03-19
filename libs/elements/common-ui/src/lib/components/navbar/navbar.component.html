@@ -53,14 +53,14 @@
             <i class="fa fa-cart-shopping"></i>
           </span>
           &nbsp;
-          <span class="login-text">Cart</span>
+          <span class="login-text mobile">Cart</span>
         </span>
 
         <span mat-menu-item (click)="name ? emailVerified ? null : goToVerifyEmailAddress() : goToLogin()">
           <span class="cart-icon" >
             <i class="fa-solid fa-user"></i>
             &nbsp;
-            <span class="login-text">
+            <span class="login-text mobile">
               <ng-container *ngIf="!name">
                 Log in
               </ng-container>
