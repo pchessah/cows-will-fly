@@ -80,8 +80,14 @@ export class AuthService {
 
   // Reset Forggot password
   forgotPassword(passwordResetEmail: string) {
+    var actionCodeSettings = {
+      // After password reset, the user will be give the ability to go back
+      // to this page.
+      url: 'https://mbao-zetu.web.app/auth/login',
+      handleCodeInApp: false
+    };
     const forgotPassword$ = this.afAuth
-      .sendPasswordResetEmail(passwordResetEmail)
+      .sendPasswordResetEmail(passwordResetEmail, actionCodeSettings)
       .then(() => this.openSnackBar('🔐 Password reset email sent, check your inbox.'))
       .catch((error) => this.openSnackBar('😢 Password reset failed because of.' + error.message));
   
