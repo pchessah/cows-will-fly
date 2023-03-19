@@ -29,6 +29,7 @@
     "crypto-js": "^4.1.1",
     "firebase": "^9.17.1",
     "lodash": "^4.17.21",
+    "ngx-device-detector": "^5.0.1",
     "rxjs": "~7.5.0",
     "subsink": "^1.0.2",
     "tslib": "^2.3.0",
