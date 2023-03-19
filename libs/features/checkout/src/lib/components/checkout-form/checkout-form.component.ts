@@ -2,9 +2,9 @@ import { Component, EventEmitter, Input,
          OnInit, Output, SimpleChanges }      from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router }                             from '@angular/router';
+import { SubSink }                            from 'subsink';
 import { IUserDetails }                       from '@cows-will-fly/interfaces/user';
 import { AuthService }                        from '@cows-will-fly/state/auth';
-import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-checkout-form',
@@ -26,7 +26,7 @@ export class CheckoutFormComponent implements OnInit {
               private _authService: AuthService) { 
     this.checkoutForm = this._fb.group({
       name:['', Validators.required],
-      email: ['' , [Validators.email, Validators.required]],
+      email: ['' , [Validators.email, Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")]],
       phone: ['' , [ Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
     });
   }

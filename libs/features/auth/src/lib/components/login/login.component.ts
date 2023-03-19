@@ -19,7 +19,7 @@ export class LogInComponent implements OnInit {
 
   constructor(private _fb:FormBuilder, private _router:Router, private _authService:AuthService) {
     this.loginForm = this._fb.group({
-      email: ['' , [Validators.email, Validators.required]],
+      email: ['' , [Validators.email, Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")]],
       password: ['' , [ Validators.required]]
     })
   }
