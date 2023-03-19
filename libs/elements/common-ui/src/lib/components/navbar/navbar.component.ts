@@ -3,6 +3,7 @@ import { Component, HostListener, OnDestroy,
 import { Router }          from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { SubSink }         from 'subsink';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { CartService }     from '@cows-will-fly/state/cart';
 import { AuthService }     from '@cows-will-fly/state/auth';
 
@@ -23,10 +24,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   emailVerified: boolean = false;
 
   constructor(private _router:Router,
+              private _deviceDetectorService: DeviceDetectorService,
               private _authService: AuthService,
               private _cartService:CartService) {
   
     this.isLoggedIn = this._authService.isLoggedIn;
+    this.isMobile = this._deviceDetectorService.isMobile();
  }
 
   ngOnInit() {
@@ -69,12 +72,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
           this._authService.signOut().subscribe()
     }
   }
-
-	@HostListener('window:resize', ['$event'])
-	onResize(event: { target: { innerWidth: number; }; }) {
-		this.width = event.target.innerWidth;
-    this.isMobile = this.width < 600;
-	}
 
   ngOnDestroy(): void {
       this._sbS.unsubscribe();
