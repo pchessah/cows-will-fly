@@ -16,8 +16,13 @@ export class LogInComponent implements OnInit {
 
   private _sbs = new SubSink();
   isLoading: boolean = false;
+  isLoggedIn: boolean = false;
 
-  constructor(private _fb:FormBuilder, private _router:Router, private _authService:AuthService) {
+  constructor(private _fb:FormBuilder,
+              private _router:Router,
+              private _authService:AuthService) {
+    this._getLoggedInUser();
+
     this.loginForm = this._fb.group({
       email: ['' , [Validators.email, Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")]],
       password: ['' , [ Validators.required]]
@@ -47,4 +52,27 @@ export class LogInComponent implements OnInit {
     this._router.navigateByUrl('/auth/forgot-password');
   }
 
+  logOut(){
+    const a = window.confirm('Are you sure you want to log out?')
+    if(a){
+      this._sbs.sink = 
+          this._authService.signOut().subscribe()
+    }
+  }
+
+
+  private _getLoggedInUser(){
+    this.isLoading = true;
+    this._sbs.sink = 
+        this._authService.getLoggedInUser().subscribe(u => {
+          if (u){
+            this.isLoggedIn = true;
+          }
+          this.isLoading = false;
+        })
+  }
+
+  ngOnDestroy(){
+    this._sbs.unsubscribe();
+  }
 }

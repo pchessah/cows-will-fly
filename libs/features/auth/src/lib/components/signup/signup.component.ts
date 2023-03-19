@@ -16,10 +16,13 @@ export class SignUpComponent implements OnInit, OnDestroy{
   signupForm: FormGroup;
   isPasswordTheSame:boolean = true;
   isLoading: boolean = false;
+  user: any;
+  isLoggedIn: boolean = false;
   
   constructor(private _fb:FormBuilder,
               private _authService: AuthService,
               private _router:Router) {
+    this._getLoggedInUser();
 
     this.signupForm = this._fb.group({
       email: ['' , [Validators.email, Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")]],
@@ -60,6 +63,25 @@ export class SignUpComponent implements OnInit, OnDestroy{
 
   check(val:string){
     return this.signupForm.get(val)?.invalid;
+  }
+
+  private _getLoggedInUser(){
+    this.isLoading = true;
+    this._sbS.sink = 
+        this._authService.getLoggedInUser().subscribe(u => {
+          if (u){
+            this.isLoggedIn = true;
+          }
+          this.isLoading = false;
+        })
+  }
+
+  logOut(){
+    const a = window.confirm('Are you sure you want to log out?')
+    if(a){
+      this._sbS.sink = 
+          this._authService.signOut().subscribe()
+    }
   }
 
   ngOnDestroy(): void {
