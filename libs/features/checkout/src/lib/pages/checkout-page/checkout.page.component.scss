@@ -24,7 +24,7 @@ img{
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 hr{
@@ -43,6 +43,9 @@ hr{
 
 .cart-summary-title{
   text-align: center;
+  font-size: 30px;
+  margin-bottom: 0;
+  margin-top: 25px;
 }
 
 .center{
@@ -54,8 +57,3 @@ hr{
   width: 90vw;
 }
 
-
-:host ::ng-deep .mdc-button__label {
-  font-size: 35px !important;
-  font-weight: 900;
-}

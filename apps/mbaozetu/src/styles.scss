@@ -40,6 +40,7 @@ $tertiary-color: #f8f5b8;
 * {
   font-family: 'Explora', cursive;
   font-size: 18px;
+  
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -52,6 +53,10 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+input{
+  font-weight: 900;
 }
 
 
