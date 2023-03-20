@@ -27,7 +27,7 @@ export class CheckoutFormComponent implements OnInit {
     this.checkoutForm = this._fb.group({
       name:  ['', Validators.required],
       email: ['' , [Validators.email, Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")]],
-      phone: ['' , [ Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
+      phone: ['' , [ Validators.required]]
     });
   }
 

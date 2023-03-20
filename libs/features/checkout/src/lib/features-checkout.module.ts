@@ -7,6 +7,7 @@ import { ElementsCommonUiModule} from            '@cows-will-fly/elements/common
 import { CheckOutPageComponent } from            './pages/checkout-page/checkout.page.component';
 import { CheckOutRoutingModule } from            './checkout.routing.module';
 import { CheckoutFormComponent } from            './components/checkout-form/checkout-form.component';
+import { NgxMatIntlTelInputComponent  } from "ngx-mat-intl-tel-input";
 
 @NgModule({
   imports: [
@@ -16,8 +17,8 @@ import { CheckoutFormComponent } from            './components/checkout-form/che
     CheckOutRoutingModule,
     AngularMaterialModule,
     ElementsCommonUiModule,
-    FeaturesCartModule
-    
+    FeaturesCartModule,
+    NgxMatIntlTelInputComponent
   ],
   declarations:[CheckOutPageComponent, CheckoutFormComponent]
 })

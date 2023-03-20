@@ -2,20 +2,40 @@
   <span class="title">Checkout</span>
   <form class="form" [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm)">
 
+    <div class="label-container">
+      <mat-label>Name</mat-label>
+    </div>
     <mat-form-field appearance="outline">
-      <input matInput placeholder="Enter your name" formControlName="name" required />
-     
+      <input title="name" matInput  formControlName="name" required />
+      <mat-hint>e.g. John Smith</mat-hint>
       <mat-error *ngIf="check('name')">Name is invalid</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <input type="email" matInput placeholder="Enter your email" formControlName="email" required />
 
+    <div class="label-container">
+      <mat-label>Email</mat-label>
+    </div>
+    <mat-form-field appearance="outline">
+      <input title="email" type="email" matInput  formControlName="email" required />
+      <mat-hint>e.g. mbao@mail.com</mat-hint>
       <mat-error *ngIf="check('email')">Email is invalid</mat-error>
     </mat-form-field>
 
+
+    <div class="label-container">
+      <mat-label>Phone</mat-label>
+    </div>
     <mat-form-field appearance="outline">
-      <input formControlName="phone" matInput type="tel" placeholder="Enter your phone number" />
+      <ngx-mat-intl-tel-input type="text"
+                            name="phone"
+                            [placeholder]="'Enter your phone number'"
+                            [onlyCountries]="['tz', 'ug', 'ke']"
+                            [preferredCountries]="['ke' ]"
+                            [enableSearch]="true"
+                            [enablePlaceholder]="true"
+                            formControlName="phone" #phone>
+      </ngx-mat-intl-tel-input>
+      <mat-hint>e.g. {{phone.selectedCountry?.placeHolder}}</mat-hint>
      
       <mat-error *ngIf="check('phone')">phone number is invalid</mat-error>
     </mat-form-field>
