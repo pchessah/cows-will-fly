@@ -1,8 +1,9 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { SubSink } from 'subsink';
-import { ICart } from '@cows-will-fly/interfaces/cart';
-import { CartService } from '@cows-will-fly/state/cart';
-import { IProduct } from '@cows-will-fly/interfaces/product';
+import { Component, Input, OnInit } from '@angular/core';
+import { SubSink }                  from 'subsink';
+import { DeviceDetectorService }    from 'ngx-device-detector';
+import { ICart }                    from '@cows-will-fly/interfaces/cart';
+import { CartService }              from '@cows-will-fly/state/cart';
+import { IProduct }                 from '@cows-will-fly/interfaces/product';
 
 @Component({
   selector: 'app-cart-summary',
@@ -10,51 +11,44 @@ import { IProduct } from '@cows-will-fly/interfaces/product';
   styleUrls: ['./cart-summary.component.scss']
 })
 
-export class CartSummaryComponent implements OnInit, OnChanges{
+export class CartSummaryComponent implements OnInit{
   private _sbS = new SubSink();
 
   @Input()isSingleProductPage: boolean = false;
   @Input() isCheckOutPage: boolean = false;
 
-  displayedColumns!: string[];
+  displayedColumns: string[] =  [ 'thumbnail', 'name', 'quantity', 'amount', 'remove'];
   dataSource: ICart[] = [];
+  cartTotal:Number = 0;
+  isMobile: boolean;
 
-  constructor(private _cartService: CartService) { 
-    this._initDisplayedColumns();
-   
+  constructor(private _cartService: CartService,
+              private _deviceDetectorService: DeviceDetectorService) { 
+    this.isMobile  = this._deviceDetectorService.isMobile();
+    this.displayedColumns = this.isMobile ? [ 'thumbnail', 'name', 'quantity', 'amount'] 
+                                          : [ 'thumbnail', 'name', 'quantity', 'amount', 'remove']
   }
 
   ngOnInit() {
     this._sbS.sink = 
-        this._cartService.getCart().subscribe(cart => this.dataSource = cart);
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this._initDisplayedColumns();
+        this._cartService.getCart().subscribe(cart => {
+          this.dataSource = cart;
+          this.cartTotal = cart.map(c =>{
+            const price = c.product.price;
+            const count = c.count;
+            return price * count
+          }).reduce((a,b) => a+b,0)
+        });
   }
 
   clearItemFromCart(item:IProduct){
     this._cartService.clearItemFromCart(item);
   }
 
-  private _initDisplayedColumns(){
-    if(this.isSingleProductPage){
-      this.displayedColumns = [ 'thumbnail', 'name', 'quantity', 'remove'];
-      return
-    }
-
-    if(this.isCheckOutPage){
-      this.displayedColumns =  ['thumbnail', 'name', 'quantity', 'amount'];
-      return
-    }
- 
-    this.displayedColumns =  [ 'thumbnail', 'name', 'quantity', 'amount', 'remove'];
-  
-  }
 
   onChangeValue(event:any, cart:ICart){
     let productCount = event.target.value;
-    
+
     if(Number(productCount) < 0) {
       productCount = 0;
     }
