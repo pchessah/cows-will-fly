@@ -5,7 +5,7 @@
        (click)="goToProduct()"/>
   <div class="actions">
     <button (click)="removeItemFromCart(product)" color="warn" class="remove-btn" mat-stroked-button>-</button>
-    <input title="number" (change)="onChangeValue($event)" [(ngModel)]="productCountInCart" type="number" class="product-count" />
+    <input title="number" (change)="onChangeValue($event)" [(ngModel)]="productCountInCart" type="number" min="0" class="product-count" />
     <button (click)="addItemToCart(product)" color="primary" class="add-btn" mat-stroked-button>+</button>
   </div>
   <div  (click)="goToProduct()" class="product-details">
