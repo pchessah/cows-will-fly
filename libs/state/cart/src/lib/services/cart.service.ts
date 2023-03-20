@@ -99,9 +99,9 @@ export class CartService {
 
   }
 
-  clearCart(){
+  clearCart(isCheckout?:boolean){
     this.updateCart([]);
-    this.openSnackBar(`🔥 Cart has been cleared.`)
+    this.openSnackBar( isCheckout ? '🎉 Order succesfully placed.' : `🔥 Cart has been cleared.`)
   }
   
 }

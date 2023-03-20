@@ -50,7 +50,7 @@ export class CheckOutPageComponent implements OnInit {
     this._sbS.sink = 
         this._checkOutService.createOrder(this.cart, userDetailsFormVal).subscribe(res => {
           this.orderIsPending = false;
-          this._cartService.clearCart();
+          this._cartService.clearCart(true);
           this.isSaving = false;
         })
     }
