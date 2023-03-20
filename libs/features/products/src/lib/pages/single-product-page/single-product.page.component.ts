@@ -46,7 +46,11 @@ export class SingleProductPageComponent implements OnInit, OnDestroy {
   }
 
   onChangeValue(event:any){
-    const productCount = event.target.value;
+    let productCount = event.target.value;
+
+    if(Number(productCount) < 0) {
+      productCount = 0;
+    }
     let updatedCart  = this._cart.filter(c => c.product.id !== this.product.id);
     const cartItem:ICart = {product: this.product, count: productCount };
     updatedCart = [...updatedCart, cartItem];
