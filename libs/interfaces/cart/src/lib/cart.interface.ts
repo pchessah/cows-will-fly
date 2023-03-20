@@ -12,4 +12,5 @@ export interface IOrder {
   id:string,
   cart:ICart[],
   user:IUserDetails
+  createdOn?:Date;
 }

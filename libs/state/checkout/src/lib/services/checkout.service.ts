@@ -15,11 +15,13 @@ export class CheckoutStateService {
 
   //TODO: ADD WAY TO CATCH ERRORS
   createOrder(cart:ICart[], userDetails:IUserDetails){
-    const id = this._afs.createId();
+    const createdOn = new Date()
+    const id = createdOn.valueOf().toString();
     const order: IOrder = {
       cart: cart,
       user:userDetails,
-      id: id
+      id: id,
+      createdOn:createdOn
     }
 
     const sendMail$ = this._emailCheckoutService.sendEmail(order);

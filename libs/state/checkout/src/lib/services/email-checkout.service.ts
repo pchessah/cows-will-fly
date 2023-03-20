@@ -21,7 +21,7 @@ export class EmailCheckoutService {
 
     //2  Convert the array to an HTML table string
     const tableString = `
-  <table style="border-collapse: collapse; width: 500px">
+  <table style="border-collapse: collapse; width: 550px">
     <tr> 
       <th style="border: 1px solid black; padding: 5px;">Your Item</th>
       <th style="border: 1px solid black; padding: 5px;">Name</th>
