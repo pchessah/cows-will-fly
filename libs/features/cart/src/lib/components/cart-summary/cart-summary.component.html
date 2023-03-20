@@ -1,6 +1,14 @@
 
 
 <table mat-table [dataSource]="dataSource">
+
+   <!-- Thumbnail Column -->
+   <ng-container matColumnDef="thumbnail">
+    <th mat-header-cell *matHeaderCellDef> Your Item </th>
+    <td mat-cell *matCellDef="let cart"> <img class="thumbnail" [src]="cart.product.imageUrl" alt="product-img" /> </td>
+  </ng-container>
+
+  
   <!-- Name Column -->
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Name </th>
@@ -11,7 +19,7 @@
   <!-- quantity Column -->
   <ng-container matColumnDef="quantity">
     <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let cart"> {{cart.count}} </td>
+    <td mat-cell *matCellDef="let cart">  <input title="number" [(value)]="cart.count" (change)="onChangeValue($event, cart)" type="number" class="product-count" min="0" /> </td>
   </ng-container>
 
     <!-- Amount Column -->
