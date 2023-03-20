@@ -18,7 +18,7 @@
 
   <!-- quantity Column -->
   <ng-container matColumnDef="quantity">
-    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <th mat-header-cell *matHeaderCellDef> Quantity </th>
     <td mat-cell *matCellDef="let cart"> 
       <input title="number" [(value)]="cart.count" (change)="onChangeValue($event, cart)" type="number" class="product-count" min="0" /> 
     </td>
