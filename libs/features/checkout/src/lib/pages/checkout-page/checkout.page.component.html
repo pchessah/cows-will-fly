@@ -13,7 +13,8 @@
 </div>
 
 <ng-template #orderPlaced>
-  <div class="center">
+  <div class="page center">
+    <span class="title"> ✅ Order placed</span>
     <img src="assets/order-confirmed.svg" alt="Order confirmed" />
     <button (click)="goToHome()" mat-raised-button color="primary">Go home</button>
   </div>
@@ -22,7 +23,7 @@
 
 <ng-template #noItemsTemplate>
   <div class="page center" *ngIf="orderIsPending else orderPlaced">
-    <span class="title">No Items in Cart</span>
+    <span class="title"> No Items in Cart</span>
     <img src="assets/no-cart.svg" alt="no-items-in-cart"/>
     <button (click)="goToProducts()" mat-raised-button color="primary">Go To Products</button>
   </div>

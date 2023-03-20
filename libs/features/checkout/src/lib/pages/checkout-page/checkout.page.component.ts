@@ -17,7 +17,7 @@ export class CheckOutPageComponent implements OnInit {
   private _sbS = new SubSink()
 
   orderIsPending: boolean = true;
-  noItemsInCart: boolean = false;
+  noItemsInCart: boolean = true;
   total: number = 0;
   cart: ICart[] = [];
   isSaving:boolean = false;
