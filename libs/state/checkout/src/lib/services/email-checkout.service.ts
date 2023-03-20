@@ -54,7 +54,7 @@ export class EmailCheckoutService {
       <td style="border: 1px solid black; padding: 5px;"><strong> Total: </strong></td>
       <td style="border: 1px solid black; padding: 5px;"></td>
       <td style="border: 1px solid black; padding: 5px;"></td>
-      <td style="border: 1px solid black; padding: 5px; font-size: 24px"> <strong> Ksh. ${totalCost} </strong></td>
+      <td style="border: 1px solid black; padding: 5px; font-size: 16px"> <strong> Ksh. ${totalCost} </strong></td>
       </tr>
     </tfoot>
   
