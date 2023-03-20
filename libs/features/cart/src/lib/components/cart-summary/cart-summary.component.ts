@@ -37,7 +37,7 @@ export class CartSummaryComponent implements OnInit{
             const price = c.product.price;
             const count = c.count;
             return price * count
-          }).reduce((a,b) => a+b,0)
+          }).reduce((a,b) => a+b,0);
         });
   }
 
