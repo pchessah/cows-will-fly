@@ -1,11 +1,10 @@
-import { Component, HostListener, OnDestroy,
-         OnInit }          from '@angular/core';
-import { Router }          from '@angular/router';
-import { Observable, map } from 'rxjs';
-import { SubSink }         from 'subsink';
-import { DeviceDetectorService } from 'ngx-device-detector';
-import { CartService }     from '@cows-will-fly/state/cart';
-import { AuthService }     from '@cows-will-fly/state/auth';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router }                       from '@angular/router';
+import { Observable, map }              from 'rxjs';
+import { SubSink }                      from 'subsink';
+import { DeviceDetectorService }        from 'ngx-device-detector';
+import { CartService }                  from '@cows-will-fly/state/cart';
+import { AuthService }                  from '@cows-will-fly/state/auth';
 
 @Component({
   selector: 'app-navbar',

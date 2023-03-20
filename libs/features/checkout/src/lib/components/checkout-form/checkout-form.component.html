@@ -21,7 +21,7 @@
     </mat-form-field>
 
     <div class="form-footer">
-      <button (click)="goBack()" type="reset" mat-stroked-button color="warn">Back</button>
+      <button class="back-btn" (click)="goBack()" type="reset" mat-stroked-button color="warn">Back</button>
       <button class="submit-btn" [disabled]="checkoutForm.invalid || isSaving" type="submit" mat-raised-button color="primary">
        <span *ngIf="!isSaving; else loading">Complete Checkout</span>
       </button>
