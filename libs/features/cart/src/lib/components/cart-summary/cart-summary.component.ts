@@ -39,17 +39,30 @@ export class CartSummaryComponent implements OnInit, OnChanges{
 
   private _initDisplayedColumns(){
     if(this.isSingleProductPage){
-      this.displayedColumns = ['name','remove'];
+      this.displayedColumns = [ 'thumbnail', 'name', 'quantity', 'remove'];
       return
     }
 
     if(this.isCheckOutPage){
-      this.displayedColumns =  ['name', 'quantity', 'amount'];
+      this.displayedColumns =  ['thumbnail', 'name', 'quantity', 'amount'];
       return
     }
  
-    this.displayedColumns =  ['name', 'quantity', 'amount', 'remove'];
+    this.displayedColumns =  [ 'thumbnail', 'name', 'quantity', 'amount', 'remove'];
   
+  }
+
+  onChangeValue(event:any, cart:ICart){
+    let productCount = event.target.value;
+    
+    if(Number(productCount) < 0) {
+      productCount = 0;
+    }
+
+    let updatedCart = this.dataSource.filter(c => c.product.id !== cart.product.id);
+    const cartItem:ICart = {product: cart.product, count: Number(productCount)};
+    updatedCart = [...updatedCart, cartItem];
+    this._cartService.updateCart(updatedCart);
   }
 
   ngOnDestroy(){
