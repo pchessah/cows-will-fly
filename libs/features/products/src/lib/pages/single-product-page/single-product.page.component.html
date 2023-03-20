@@ -7,7 +7,7 @@
          alt="product-img" />
     <div class="actions">
       <button (click)="removeItemFromCart(product)" color="warn" class="remove-btn" mat-stroked-button>-</button>
-      <input  (change)="onChangeValue($event)" [(ngModel)]="productCountInCart" title="number" type="number" class="product-count" />
+      <input  (change)="onChangeValue($event)" [(ngModel)]="productCountInCart" title="number" type="number" min="0" class="product-count" />
       <button (click)="addItemToCart(product)" color="primary" class="add-btn" mat-stroked-button>+</button>
     </div>
     <div class="product-details">
