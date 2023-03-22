@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SubSink }                  from 'subsink';
+import { combineLatest }            from 'rxjs';
 import { DeviceDetectorService }    from 'ngx-device-detector';
 import { ICart }                    from '@cows-will-fly/interfaces/cart';
 import { CartService }              from '@cows-will-fly/state/cart';
@@ -18,27 +19,41 @@ export class CartSummaryComponent implements OnInit{
   @Input() isCheckOutPage: boolean = false;
 
   displayedColumns: string[] =  [ 'thumbnail', 'name', 'quantity', 'amount', 'remove'];
+  displayedDeliveryCostColumns: string[] =  [ 't', 'n', 'q', 'a', 'r'];
   dataSource: ICart[] = [];
-  cartTotal:Number = 0;
+  cartTotal:number = 0;
   isMobile: boolean;
+  deliveryCost: number = 0;
 
   constructor(private _cartService: CartService,
               private _deviceDetectorService: DeviceDetectorService) { 
     this.isMobile  = this._deviceDetectorService.isMobile();
-    this.displayedColumns = this.isMobile ? [ 'thumbnail', 'name', 'quantity', 'amount'] 
-                                          : [ 'thumbnail', 'name', 'quantity', 'amount', 'remove']
+    this._setDisplayColumns()
   }
 
   ngOnInit() {
+    const cart$ = this._cartService.getCart();
+    const deliveryCost$ = this._cartService.getDeliveryCost();
     this._sbS.sink = 
-        this._cartService.getCart().subscribe(cart => {
+        
+        combineLatest([cart$, deliveryCost$]).subscribe(([cart, deliveryCost]) => {
           this.dataSource = cart;
+          this.deliveryCost = deliveryCost;
           this.cartTotal = cart.map(c =>{
             const price = c.product.price;
             const count = c.count;
             return price * count
           }).reduce((a,b) => a+b,0);
+          this.cartTotal = this.cartTotal + deliveryCost ?? 0;
         });
+  }
+
+  private _setDisplayColumns(){
+    this.displayedColumns = this.isMobile ? [ 'thumbnail', 'name', 'quantity', 'amount'] 
+                                          : [ 'thumbnail', 'name', 'quantity', 'amount', 'remove'];
+
+    this.displayedDeliveryCostColumns =  this.isMobile ? [ 't', 'n', 'q', 'a'] 
+                                                       : [ 't', 'n', 'q', 'a', 'r'];
   }
 
   clearItemFromCart(item:IProduct){
