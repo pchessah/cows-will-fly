@@ -11,7 +11,11 @@ import { LocalStorageService }          from '@cows-will-fly/state/local-storage
 export class CartService {
 
   private _cartSrc$$ = new BehaviorSubject<ICart[]>([]);
+  private _deliveryCostSrc$$ = new BehaviorSubject<number>(0);
+
   private _cart$ =  this._cartSrc$$.asObservable();
+  private _deliveryCost$ = this._deliveryCostSrc$$.asObservable();
+
   
   constructor(private _localSorageService: LocalStorageService,
               private _snackBar: MatSnackBar) { 
@@ -20,6 +24,22 @@ export class CartService {
 
   getCart(){
     return this._cart$.pipe(filter(res => !!res));
+  }
+
+  getDeliveryCost(){
+    return this._deliveryCost$;
+  }
+
+  getCurrentDeliveryCostValue(){
+    return this._deliveryCostSrc$$.getValue();
+  }
+
+  setDeliveryCost(cost:number){
+    this._deliveryCostSrc$$.next(cost);
+  }
+
+  resetDeliveryCost(){
+    this._deliveryCostSrc$$.next(0);
   }
 
   private _initializeData(){
