@@ -1,23 +1,27 @@
-import { Injectable } from "@angular/core";
-import emailjs from "@emailjs/browser";
-import { from } from "rxjs";
-
+import { Injectable }    from "@angular/core";
+import  emailjs          from "@emailjs/browser";
+import { from }          from "rxjs";
+import {CartService}     from "@cows-will-fly/state/cart";
 import { ICart, IOrder } from "@cows-will-fly/interfaces/cart";
 
 @Injectable({ providedIn: "root" })
 export class EmailCheckoutService {
-  constructor() {}
+  constructor(private _cartService:CartService) {}
 
   //Function used to create a formatted list to be used in emails
   private _getProductsForAdmin = (rawProducts: ICart[]) => {
-    //1 Get total of cart
-    const totalCost = rawProducts
+    //1 Get total of cart and total of delivery charges
+    const deliveryCharges = this._cartService.getCurrentDeliveryCostValue();
+    let totalCost = rawProducts
       .map((c) => {
         const price = c.product.price;
         const count = c.count;
         return price * count;
       })
       .reduce((a, b) => a + b, 0);
+
+      totalCost += deliveryCharges;
+     
 
     //2  Convert the array to an HTML table string
     const tableString = `
@@ -50,6 +54,12 @@ export class EmailCheckoutService {
       .join("")}
 
     <tfoot>
+    <tr> 
+      <td style="border: 1px solid black; padding: 5px;"><strong> Delivery Charges: </strong></td>
+      <td style="border: 1px solid black; padding: 5px;"></td>
+      <td style="border: 1px solid black; padding: 5px;"></td>
+      <td style="border: 1px solid black; padding: 5px; font-size: 14px"> <strong> Ksh. ${deliveryCharges} </strong></td>
+    </tr>
     <tr> 
       <td style="border: 1px solid black; padding: 5px;"><strong> Total: </strong></td>
       <td style="border: 1px solid black; padding: 5px;"></td>
