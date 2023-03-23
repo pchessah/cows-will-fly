@@ -41,17 +41,25 @@ const routes: Routes = [
 
   //Auth module
   {
-    path:"auth",
-    loadChildren: ()=>
-      import("../../../../libs/features/auth/src/lib/features-auth.module"
-      ).then((m)=> m.FeaturesAuthModule)
+    path: "auth",
+    loadChildren: () =>
+      import(
+        "../../../../libs/features/auth/src/lib/features-auth.module"
+      ).then((m) => m.FeaturesAuthModule),
+  },
+
+  {
+    path: "privacy-policy",
+    loadChildren: () =>
+      import(
+        "../../../../libs/features/cookies/src/lib/features-cookies.module"
+      ).then((m) => m.FeaturesCookiesModule),
   },
 
   { path: "", redirectTo: "/home", pathMatch: "full" }, //Home route
 
-  { path: "**", component:Error404Component } //Error404 Route
-]; 
-
+  { path: "**", component: Error404Component }, //Error404 Route
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
