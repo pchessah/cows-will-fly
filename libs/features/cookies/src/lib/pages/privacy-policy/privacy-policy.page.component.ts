@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['privacy-policy.page.component.scss']
 })
 
-export class PrivacyPolicyComponent implements OnInit {
+export class PrivacyPolicyPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
