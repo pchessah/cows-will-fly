@@ -26,6 +26,7 @@
       "@cows-will-fly/features/checkout": [
         "libs/features/checkout/src/index.ts"
       ],
+      "@cows-will-fly/features/cookies": ["libs/features/cookies/src/index.ts"],
       "@cows-will-fly/features/home": ["libs/features/home/src/index.ts"],
       "@cows-will-fly/features/products": [
         "libs/features/products/src/index.ts"

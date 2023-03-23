@@ -18,9 +18,7 @@
         "assets": ["apps/mbaozetu/src/favicon.ico", "apps/mbaozetu/src/assets"],
         "styles": ["apps/mbaozetu/src/styles.scss"],
         "scripts": [],
-        "allowedCommonJsDependencies": [
-          "lodash", "crypto-js"
-       ]
+        "allowedCommonJsDependencies": ["lodash", "crypto-js"]
       },
       "configurations": {
         "production": {
