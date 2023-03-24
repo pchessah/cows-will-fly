@@ -8,6 +8,7 @@ import { SubSink }                            from 'subsink';
 import { IDeliveryLocation, IUserDetails }    from '@cows-will-fly/interfaces/user';
 import { AuthService }                        from '@cows-will-fly/state/auth';
 import { CartService }                        from '@cows-will-fly/state/cart';
+import { PromoCodeService } from '@cows-will-fly/state/checkout';
 
 @Component({
   selector: 'app-checkout-form',
@@ -24,6 +25,7 @@ export class CheckoutFormComponent implements OnInit {
 
   checkoutForm: FormGroup;
   customerWantsDelivery:boolean = false;
+  customerHasPromoCode:boolean = false;
 
   locations:IDeliveryLocation[] = [
     {name:'Nairobi CBD', cost: 500},
@@ -36,6 +38,7 @@ export class CheckoutFormComponent implements OnInit {
   ]
  
   constructor(private _fb:FormBuilder,
+              private _promoCodeService:PromoCodeService,
               private _cartService: CartService,
               private _router:Router,
               private _authService: AuthService) 
@@ -44,9 +47,9 @@ export class CheckoutFormComponent implements OnInit {
       name:  ['', Validators.required],
       email: ['' , [Validators.email, Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")]],
       phone: ['' , [ Validators.required]],
+      promocode: [''],
       location: ['' ],
       deliveryDetails: ['']
-
     });
   }
 
@@ -63,6 +66,19 @@ export class CheckoutFormComponent implements OnInit {
       this.checkoutForm.controls['location'].setValidators(Validators.required);
     }
     this.checkoutForm.controls['location'].updateValueAndValidity();
+  }
+
+  togglePromoCode(event:MatSlideToggleChange){
+    this.customerHasPromoCode = event.checked;
+    const control = this.checkoutForm.controls['promocode'];
+    if(!this.customerHasPromoCode){
+      control.setValue(null);
+      this._promoCodeService.clearCurrentPromoCode();
+      control.removeValidators(Validators.required);
+    } else {
+      control.setValidators(Validators.required);
+    }
+    control.updateValueAndValidity();
   }
 
   onLocationSelected(event:MatSelectChange){
@@ -100,5 +116,16 @@ export class CheckoutFormComponent implements OnInit {
 
   goBack(){
     this._router.navigateByUrl('/cart');
+  }
+
+  findPromoCode(){
+    const control = this.checkoutForm.controls['promocode'];
+    const promoCode = control.value;
+    if(!!promoCode || !!promoCode?.length){
+      this._sbS.sink = 
+          this._promoCodeService.getPromoCodeFromDb(promoCode).subscribe(promo =>{
+            this._promoCodeService.setPromoCode(promo);
+          });
+    }
   }
 }

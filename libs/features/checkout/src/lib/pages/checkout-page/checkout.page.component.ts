@@ -1,11 +1,11 @@
-import { Router }               from "@angular/router";
-import { Component, OnInit }    from "@angular/core";
-import { combineLatest }        from "rxjs";
-import { SubSink }              from "subsink";
-import { CartService }          from "@cows-will-fly/state/cart";
-import { IUserDetails }         from "@cows-will-fly/interfaces/user";
-import { CheckoutStateService}  from "@cows-will-fly/state/checkout";
-import { ICart }                from "@cows-will-fly/interfaces/cart";
+import { Router }                                 from "@angular/router";
+import { Component, OnInit }                      from "@angular/core";
+import { combineLatest }                          from "rxjs";
+import { SubSink }                                from "subsink";
+import { CartService }                            from "@cows-will-fly/state/cart";
+import { IPromoCode, IUserDetails }               from "@cows-will-fly/interfaces/user";
+import { CheckoutStateService, PromoCodeService}  from "@cows-will-fly/state/checkout";
+import { ICart }                                  from "@cows-will-fly/interfaces/cart";
 
 @Component({
   selector: "app-checkout",
@@ -21,18 +21,22 @@ export class CheckOutPageComponent implements OnInit {
   total: number = 0;
   cart: ICart[] = [];
   isSaving:boolean = false;
+  currentPromoCode: IPromoCode = null as any;
 
   constructor(private _router: Router,
+              private _promoCodeService: PromoCodeService,
               private _checkOutService: CheckoutStateService,
               private _cartService: CartService) {}
 
   ngOnInit() {
     const cartTotal$ = this._cartService.getCartTotal();
     const cart$ = this._cartService.getCart();
+    const currentPromocode$ = this._promoCodeService.getCurrentPromoCode();
     this._sbS.sink = 
-        combineLatest([ cartTotal$, cart$]).subscribe(([ cartTotal, cart]) =>{
+        combineLatest([ cartTotal$, cart$, currentPromocode$]).subscribe(([ cartTotal, cart, currentPromoCode]) =>{
           this.noItemsInCart = cart.length === 0;
-          this.total = cartTotal;
+          this.currentPromoCode = currentPromoCode;
+          this.total = cartTotal - this.currentPromoCode?.value ?? 0;
           this.cart = cart;
         });
   }

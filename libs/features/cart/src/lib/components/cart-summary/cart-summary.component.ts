@@ -3,8 +3,10 @@ import { SubSink }                  from 'subsink';
 import { combineLatest }            from 'rxjs';
 import { DeviceDetectorService }    from 'ngx-device-detector';
 import { ICart }                    from '@cows-will-fly/interfaces/cart';
-import { CartService }              from '@cows-will-fly/state/cart';
 import { IProduct }                 from '@cows-will-fly/interfaces/product';
+import { IPromoCode }               from '@cows-will-fly/interfaces/user';
+import { CartService }              from '@cows-will-fly/state/cart';
+import { PromoCodeService }         from '@cows-will-fly/state/checkout';
 
 @Component({
   selector: 'app-cart-summary',
@@ -20,13 +22,17 @@ export class CartSummaryComponent implements OnInit{
 
   displayedColumns: string[] =  [ 'thumbnail', 'name', 'quantity', 'amount', 'remove'];
   displayedDeliveryCostColumns: string[] =  [ 't', 'n', 'q', 'a', 'r'];
+  displayedPromoCodeColumns: string[] =  [ 'ta', 'na', 'qa', 'aa', 'ra'];
   dataSource: ICart[] = [];
   cartTotal:number = 0;
   isMobile: boolean;
   deliveryCost: number = 0;
+  currentPromoCode:IPromoCode = null as any;
 
   constructor(private _cartService: CartService,
-              private _deviceDetectorService: DeviceDetectorService) { 
+              private _promoCodeService: PromoCodeService,
+              private _deviceDetectorService: DeviceDetectorService)
+  { 
     this.isMobile  = this._deviceDetectorService.isMobile();
     this._setDisplayColumns()
   }
@@ -34,17 +40,28 @@ export class CartSummaryComponent implements OnInit{
   ngOnInit() {
     const cart$ = this._cartService.getCart();
     const deliveryCost$ = this._cartService.getDeliveryCost();
+    const promoCode$ = this._promoCodeService.getCurrentPromoCode();
+
     this._sbS.sink = 
-        
-        combineLatest([cart$, deliveryCost$]).subscribe(([cart, deliveryCost]) => {
+        combineLatest([cart$, deliveryCost$, promoCode$]).subscribe(([cart, deliveryCost, currentPromoCode]) => {
           this.dataSource = cart;
           this.deliveryCost = deliveryCost;
+          this.currentPromoCode = currentPromoCode;
+
           this.cartTotal = cart.map(c =>{
             const price = c.product.price;
             const count = c.count;
             return price * count
           }).reduce((a,b) => a+b,0);
-          this.cartTotal = this.cartTotal + deliveryCost ?? 0;
+
+          if(!!deliveryCost){
+            this.cartTotal += deliveryCost;
+          }
+
+          if(!!currentPromoCode?.value){
+            this.cartTotal -= currentPromoCode?.value;
+          }
+         
         });
   }
 
@@ -54,6 +71,10 @@ export class CartSummaryComponent implements OnInit{
 
     this.displayedDeliveryCostColumns =  this.isMobile ? [ 't', 'n', 'q', 'a'] 
                                                        : [ 't', 'n', 'q', 'a', 'r'];
+
+    this.displayedPromoCodeColumns =  this.isMobile ? [ 'ta', 'na', 'qa', 'aa'] 
+                                                    : [ 'ta', 'na', 'qa', 'aa', 'ra'];
+
   }
 
   clearItemFromCart(item:IProduct){

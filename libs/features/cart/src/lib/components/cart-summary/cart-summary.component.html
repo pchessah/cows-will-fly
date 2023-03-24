@@ -1,5 +1,7 @@
 <table mat-table [dataSource]="dataSource">
 
+  <!----------------------------------------------- CART DETAILS SECTION ------------------------------------------------------------>
+
   <!-- Thumbnail Column -->
   <ng-container matColumnDef="thumbnail">
     <th mat-header-cell *matHeaderCellDef> Your Item </th>
@@ -41,6 +43,8 @@
     <td class="total" mat-footer-cell *matFooterCellDef>  <span>Ksh. {{cartTotal}}</span></td>
   </ng-container>
 
+
+  <!----------------------------------------------- DELIVERY CHARGES DETAILS SECTION ------------------------------------------------------------>
     <!-- Thumbnail Column -->
     <ng-container matColumnDef="t">
       <td class="total" mat-footer-cell *matFooterCellDef> Delivery Charges </td>
@@ -67,8 +71,45 @@
       <td class="total" mat-footer-cell *matFooterCellDef>  <span>Ksh. {{deliveryCost}}</span></td>
     </ng-container>
 
+
+  <!----------------------------------------------- PROMOCODE DETAILS SECTION ------------------------------------------------------------>
+    <!-- Thumbnail Column -->
+    <ng-container matColumnDef="ta">
+      <td class="total" mat-footer-cell *matFooterCellDef> Promocode </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="na">
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+  
+  
+    <!-- quantity Column -->
+    <ng-container matColumnDef="qa">
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+  
+    <!-- Amount Column -->
+    <ng-container matColumnDef="aa">
+      <td mat-footer-cell *matFooterCellDef>
+        <ng-container *ngIf="isMobile">
+          <span>{{ currentPromoCode ? currentPromoCode.name : 'N/A'}}</span> -
+          <span>Ksh.{{ currentPromoCode ? currentPromoCode.value : 0}}</span>
+        </ng-container>
+      </td>
+    </ng-container>
+  
+    <!-- Remove Column -->
+    <ng-container matColumnDef="ra">
+      <td class="total" mat-footer-cell *matFooterCellDef>
+        <span>{{ currentPromoCode ? currentPromoCode.name : 'N/A'}}</span> -
+        <span>Ksh.{{ currentPromoCode ? currentPromoCode.value : 0}}</span>
+      </td>
+    </ng-container>
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-footer-row *matFooterRowDef="displayedPromoCodeColumns"></tr>
   <tr mat-footer-row *matFooterRowDef="displayedDeliveryCostColumns"></tr>
   <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
 </table>

@@ -34,9 +34,29 @@
       <mat-error *ngIf="check('phone')">phone number is invalid</mat-error>
     </mat-form-field>
 
-    <mat-slide-toggle [color]="'primary'" (change)="toggle($event)" [checked]="customerWantsDelivery" [disabled]="isSaving">
-      Do you want delivery?
-    </mat-slide-toggle>
+    <div class="toggle-container">
+      <mat-slide-toggle [color]="'primary'" (change)="togglePromoCode($event)" [checked]="customerHasPromoCode" [disabled]="isSaving">
+        Do you Have a promo code?
+      </mat-slide-toggle>
+
+      <mat-slide-toggle [color]="'primary'" (change)="toggle($event)" [checked]="customerWantsDelivery" [disabled]="isSaving">
+        Do you want delivery?
+      </mat-slide-toggle>
+
+    </div>
+
+    <ng-container *ngIf="customerHasPromoCode">
+      <div class="label-container">
+        <mat-label>Enter Promo Code*</mat-label>
+      </div>
+      <mat-form-field appearance="outline">
+        <input (blur)="findPromoCode()" title="promocode" type="text" matInput formControlName="promocode" required />
+        <mat-hint>e.g. MBAO7</mat-hint>
+        <mat-error *ngIf="check('promocode')">Promo code is invalid</mat-error>
+      </mat-form-field>
+    </ng-container>
+
+   
 
     <ng-container *ngIf="customerWantsDelivery">
       <div class="label-container">
@@ -58,6 +78,8 @@
         <mat-hint>e.g. estate, building, street</mat-hint>
       </mat-form-field>
     </ng-container>
+
+  
 
 
     <div class="form-footer">
