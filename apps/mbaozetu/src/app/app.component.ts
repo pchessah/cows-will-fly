@@ -6,5 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'mbaozetu';
+  title = 'Mbao Zetu';
+
+  privacyHasBeenClosed: boolean = false;
+
+  constructor(){
+    this._checkPrivacyStatus();
+
+  }
+
+  private _checkPrivacyStatus(){
+    this.privacyHasBeenClosed = localStorage.getItem('privacyHasBeenClosed') == 'true';
+  }
+
+  updatePrivacyClose(){
+    localStorage.setItem("privacyHasBeenClosed", "true");
+    this.privacyHasBeenClosed = true;
+  }
+
+
 }

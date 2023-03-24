@@ -1,4 +1,4 @@
 <router-outlet></router-outlet>
-<div class="footer">
-  <app-privacy-policy-banner></app-privacy-policy-banner>
+<div class="footer" *ngIf="!privacyHasBeenClosed">
+  <app-privacy-policy-banner (close)="updatePrivacyClose()"></app-privacy-policy-banner>
 </div>

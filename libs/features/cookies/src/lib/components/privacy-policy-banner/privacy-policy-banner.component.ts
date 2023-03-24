@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router }            from '@angular/router';
+
 
 @Component({
   selector: 'app-privacy-policy-banner',
@@ -9,6 +10,8 @@ import { Router }            from '@angular/router';
 
 export class PrivacyPolicyBannerComponent implements OnInit {
   
+ @Output() close: EventEmitter<any> = new EventEmitter();
+
   constructor(private _router:Router) { }
 
   ngOnInit() { }
@@ -16,4 +19,6 @@ export class PrivacyPolicyBannerComponent implements OnInit {
   goToPrivacyPolicy(){
     this._router.navigateByUrl('/privacy-policy');
   }
+  
+
 }
