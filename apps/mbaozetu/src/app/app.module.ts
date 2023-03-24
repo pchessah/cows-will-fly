@@ -14,6 +14,7 @@ import { StateCartModule }           from '@cows-will-fly/state/cart';
 import { StateCheckoutModule }       from '@cows-will-fly/state/checkout';
 import { StateLocalStorageModule }   from "@cows-will-fly/state/local-storage";
 import { StateAuthModule }           from "@cows-will-fly/state/auth";
+import { FeaturesCookiesModule }     from '@cows-will-fly/features/cookies';
 
 import { AppComponent }              from './app.component';
 import { AppRoutingModule }          from '../routes/app.routing.module';
@@ -27,6 +28,7 @@ import { environemnt }               from '../environments/environment';
     BrowserAnimationsModule,
     AppRoutingModule,
     FeaturesHomeModule,
+    FeaturesCookiesModule,
     MatButtonModule,
     AngularFireModule.initializeApp(environemnt.firebaseConfig),
     AngularFireDatabaseModule,
