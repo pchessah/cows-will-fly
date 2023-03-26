@@ -1,4 +1,4 @@
-import { NgModule }                  from '@angular/core';
+import { NgModule, isDevMode }                  from '@angular/core';
 import { BrowserModule }             from '@angular/platform-browser';
 import { BrowserAnimationsModule }   from '@angular/platform-browser/animations';  
 import { MatButtonModule }           from '@angular/material/button';
@@ -20,6 +20,7 @@ import { AppComponent }              from './app.component';
 import { AppRoutingModule }          from '../routes/app.routing.module';
 import { Error404Component }         from './error404/error404.component';
 import { environemnt }               from '../environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent, Error404Component],
@@ -40,7 +41,13 @@ import { environemnt }               from '../environments/environment';
     StateProductsModule.forRoot(),
     StateCartModule.forRoot(),
     StateLocalStorageModule.forRoot(),
-    StateAuthModule.forRoot()
+    StateAuthModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
    ],
   providers: [],
   bootstrap: [AppComponent],

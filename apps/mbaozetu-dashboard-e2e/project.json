@@ -19,12 +19,18 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/mbaozetu-dashboard-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": [
+          "apps/mbaozetu-dashboard-e2e/**/*.{js,ts}"
+        ]
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["mbaozetu-dashboard"]
+  "implicitDependencies": [
+    "mbaozetu-dashboard"
+  ]
 }
