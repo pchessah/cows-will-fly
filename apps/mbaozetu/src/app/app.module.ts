@@ -7,6 +7,7 @@ import { AngularFireStorageModule }  from '@angular/fire/compat/storage';
 import { AngularFirestoreModule }    from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireModule }         from "@angular/fire/compat";
+import { ServiceWorkerModule }       from '@angular/service-worker';
 
 import { FeaturesHomeModule}         from '@cows-will-fly/features/home';
 import { StateProductsModule }       from '@cows-will-fly/state/products';
@@ -16,11 +17,10 @@ import { StateLocalStorageModule }   from "@cows-will-fly/state/local-storage";
 import { StateAuthModule }           from "@cows-will-fly/state/auth";
 import { FeaturesCookiesModule }     from '@cows-will-fly/features/cookies';
 
-import { AppComponent }              from './app.component';
 import { AppRoutingModule }          from '../routes/app.routing.module';
-import { Error404Component }         from './error404/error404.component';
 import { environemnt }               from '../environments/environment';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { Error404Component }         from './error404/error404.component';
+import { AppComponent }              from './app.component';
 
 @NgModule({
   declarations: [AppComponent, Error404Component],
