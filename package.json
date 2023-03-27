@@ -5,9 +5,10 @@
   "scripts": {
     "start": "nx serve mbaozetu",
     "build": "nx build mbaozetu",
+    "deploy": "firebase deploy --only hosting:mbao-zetu",
     "start-dashboard": "nx serve mbaozetu-dashboard",
     "build-dashboard":"nx build mbaozetu-dashboard",
-    "deploy": "firebase deploy --only hosting:mbao-zetu"
+    "deploy-dashboard": "firebase deploy --only hosting:mbao-zetu-dashboard"
   },
   "private": true,
   "dependencies": {
