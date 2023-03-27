@@ -1,0 +1,21 @@
+:host :ng-deep .mat-drawer-content{
+  margin-left: 185px;
+}
+
+mat-drawer-container {
+  height: calc(100vh - 20px);
+}
+
+.sidenav{
+  padding: 10px 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+.toggle-btn{
+  padding: 20px 10px 15px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  position: fixed;
+  top: 45%;
+}
