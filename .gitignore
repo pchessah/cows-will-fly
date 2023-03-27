@@ -41,3 +41,5 @@ Thumbs.db
 .angular
 apps/mbaozetu/src/environments/environment.prod.ts
 apps/mbaozetu/src/environments/environment.ts
+apps/mbaozetu-dashboard/src/environments/environment.prod.ts
+apps/mbaozetu-dashboard/src/environments/environment.ts
