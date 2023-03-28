@@ -6,9 +6,10 @@ import { ProductsOverviewComponent }  from './pages/products-overview/products-o
 
 
 const routes: Routes = [
-  { path: '', component:AllProductsPageComponent },
+  { path: 'all-products', component:AllProductsPageComponent },
+  { path: 'overview', component: ProductsOverviewComponent},
   { path: ':id', component: SingleProductPageComponent},
-  { path: 'overview', component: ProductsOverviewComponent}
+  { path: "", redirectTo: "/products/all-products", pathMatch: "full" }
 ]; 
 
 // configures NgModule imports and exports
