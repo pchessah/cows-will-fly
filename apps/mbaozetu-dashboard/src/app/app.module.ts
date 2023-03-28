@@ -6,6 +6,7 @@ import { AngularFireAuthModule }    from "@angular/fire/compat/auth";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule }   from '@angular/fire/compat/firestore';
 import { AngularFireModule }        from "@angular/fire/compat";
+import { NgChartsModule }           from 'ng2-charts';
 import { ElementsCommonUiModule }   from '@cows-will-fly/elements/common-ui';
 import { environemnt }              from '../environments/environment';
 import { AppComponent }             from './app.component';
@@ -23,6 +24,7 @@ import { appRoutes }                from './app.routes';
     AngularFireAuthModule,
     ElementsCommonUiModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+    NgChartsModule
 
   ],
   providers: [],
