@@ -19,8 +19,15 @@ mat-drawer-container {
   border-bottom-right-radius: 15px;
   position: fixed;
   top: 45%;
+  color: antiquewhite;
+  background-color: white;
 }
 
 mat-sidenav {
   width: 250px;
+}
+
+i{
+  color: black;
+  font-size: 20px;
 }
