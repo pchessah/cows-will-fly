@@ -6,7 +6,7 @@
           <img src="assets/orders.svg" alt="orders" />
           <h1 >Orders</h1>
           <p class="card-text">You have 15 orders.</p>
-          <a routerLink="/orders" class="btn btn-primary">View Orders</a>
+          <a mat-raised-button routerLink="/orders" color="primary" class="btn btn-primary">View Orders</a>
         </div>
       </div>
     </div>
@@ -16,7 +16,7 @@
           <img src="assets/users.svg" alt="users" />
           <h1 >Users</h1>
           <p class="card-text">You have 23 users.</p>
-          <a routerLink="/users" class="btn btn-primary">View Users</a>
+          <a mat-raised-button routerLink="/users" color="primary" class="btn btn-primary">View Users</a>
         </div>
       </div>
     </div>
@@ -26,15 +26,16 @@
           <img src="assets/products.svg" alt="products" />
           <h1 >Products</h1>
           <p class="card-text">You have 89 products.</p>
-          <a routerLink="/products" class="btn btn-primary">View Products</a>
+          <a mat-raised-button routerLink="/products/overview" color="primary" class="btn btn-primary">View Products</a>
         </div>
       </div>
     </div>
   </div>
 
   <div class="row">
-    <app-dashboard-chart></app-dashboard-chart>
+    <div class="card">
+      <app-dashboard-chart></app-dashboard-chart>
+    </div>
   </div>
 
- 
 </div>
