@@ -9,6 +9,8 @@ import { ProductCardComponent }       from "./components/product-card/product-ca
 import { ProductsRoutingModule }      from "./products.router.module";
 import { AllProductsPageComponent }   from "./pages/all-products/all-products.page.component";
 import { SingleProductPageComponent } from "./pages/single-product-page/single-product.page.component";
+import { ProductsOverviewComponent }  from "./pages/products-overview/products-overview.component";
+import { ProductsTableComponent }     from "./components/products-table/products-table.component";
 
 @NgModule({
   imports: [
@@ -20,10 +22,13 @@ import { SingleProductPageComponent } from "./pages/single-product-page/single-p
     FeaturesCartModule,
     NgOptimizedImage
   ],
+
   declarations: [
     ProductCardComponent,
     AllProductsPageComponent,
     SingleProductPageComponent,
+    ProductsOverviewComponent,
+    ProductsTableComponent
   ],
 })
 export class FeaturesProductsModule {}
