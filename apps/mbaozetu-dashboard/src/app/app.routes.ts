@@ -11,6 +11,15 @@ export const appRoutes: Route[] = [
       ).then((m) => m.FeaturesAuthModule),
   },
 
+  {
+    //Product module
+    path: "products",
+    loadChildren: () =>
+      import(
+        "../../../../libs/features/products/src/lib/features-products.module"
+      ).then((m) => m.FeaturesProductsModule),
+  },
+
   //Home module
   {
     path: "home",
