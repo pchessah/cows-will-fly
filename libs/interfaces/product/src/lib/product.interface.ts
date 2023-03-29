@@ -8,9 +8,13 @@ export interface IProduct {
 }
 
 
-export interface IFileUpload {
-  key: string;
-  name: string;
-  url: string;
+export class IFileUpload {
+  key!: string;
+  name!: string;
+  url!: string;
   file: File;
+
+  constructor(file:File){
+    this.file = file;
+  }
 }
