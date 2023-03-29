@@ -1,0 +1,75 @@
+/* Structure */
+.table, table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 40%;
+}
+
+:host ::ng-deep .mat-mdc-form-field-flex {
+  padding-left: 15px;
+}
+
+.table{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+img{
+  width: 30px;
+  height: 30px;
+}
+
+td, th {
+text-align: center;
+}
+
+button{
+  margin-left: 10px;
+}
+
+.fa-pen-to-square{
+  color: blue;
+
+}
+
+.fa-trash-can{
+  color: red;
+}
+
+.action-span{
+  padding: 10px;
+}
+
+.action-span:hover{
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  border-radius: 50%;
+}
+
+.top-row{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.button-product{
+  height: 55px;
+  width: 230px;
+}
+
+.add-product-text{
+  font-weight: bolder;
+  margin-right: 10px;
+}
+
+.fa-plus{
+  font-size: 12px;
+}
