@@ -4,10 +4,13 @@ export interface IProduct {
   description: string;
   imageUrl: string;
   price: number;
-  category:IProductCategory
+  image:IFileUpload,
 }
 
-export enum IProductCategory  {
-  "CHAIR",
-  "TABLE"
+
+export interface IFileUpload {
+  key: string;
+  name: string;
+  url: string;
+  file: File;
 }
