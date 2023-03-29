@@ -1,0 +1,50 @@
+mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  display: flex;
+  width: 100%;
+}
+
+mat-card{
+  padding: 40px 20px;
+}
+
+mat-card-title{
+  font-family: 'Explora', cursive;
+  font-size: 40px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-weight: 900;
+}
+
+.button-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+form{
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  mat-card{
+    padding: 40px 20px;
+    width: 350px;
+  }
+}
+
+:host ::ng-deep .mdc-button__label {
+  font-size: 25px !important;
+  font-weight: 900;
+}
