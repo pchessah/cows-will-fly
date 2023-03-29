@@ -1,7 +1,7 @@
 <nav>
 
   <ul>
-    <li><a routerLink="/home/dashboard" >Dashboard</a></li>
+    <li (click)="goTo('/home/dashboard')"><a>Dashboard</a></li>
     <li (click)="goTo('/products/overview')"><a>Products</a></li>
     <li><a routerLink="/first-component" >Users</a></li>
     <li><a routerLink="/first-component" >Orders</a></li>

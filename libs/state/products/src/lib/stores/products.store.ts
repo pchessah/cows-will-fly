@@ -1,20 +1,32 @@
-import { Injectable } from "@angular/core";
-import { AngularFirestore } from "@angular/fire/compat/firestore";
-import { AngularFireStorage } from "@angular/fire/compat/storage";
-import { Observable, finalize, from } from "rxjs";
-import { IProduct } from "@cows-will-fly/interfaces/product";
+import { Injectable }                  from "@angular/core";
+import { AngularFirestore }            from "@angular/fire/compat/firestore";
+import { AngularFireStorage }          from "@angular/fire/compat/storage";
+import { BehaviorSubject, Observable, finalize, from }  from "rxjs";
+import { IProduct }                    from "@cows-will-fly/interfaces/product";
 
 @Injectable({ providedIn: "root" })
 
+
 //TODO: Add way to catch Errors
 export class ProductStore {
-  constructor(
-    private _afs: AngularFirestore,
-    private _storage: AngularFireStorage
-  ) {}
+
+  private _productSrc$$ = new BehaviorSubject<IProduct[]>(null as any);
+
+  private _products$ = this._productSrc$$.asObservable();
+
+  constructor( private _afs: AngularFirestore,
+               private _storage: AngularFireStorage) {
+    this._getProductsFromFireStore();
+  }
+
+  private _getProductsFromFireStore(){
+    this._afs.collection("products").valueChanges().subscribe(res =>{
+      this._productSrc$$.next(res as IProduct[]);
+    });
+  }
 
   getProducts() {
-    return this._afs.collection("products").valueChanges();
+    return this._products$;
   }
 
   getOneProduct(id: string) {
