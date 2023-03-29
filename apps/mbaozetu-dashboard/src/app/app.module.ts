@@ -8,6 +8,7 @@ import { AngularFirestoreModule }   from '@angular/fire/compat/firestore';
 import { AngularFireModule }        from "@angular/fire/compat";
 import { NgChartsModule }           from 'ng2-charts';
 import { ElementsCommonUiModule }   from '@cows-will-fly/elements/common-ui';
+import { StateFileUploadModule }    from '@cows-will-fly/state/file-upload';
 import { environemnt }              from '../environments/environment';
 import { AppComponent }             from './app.component';
 import { appRoutes }                from './app.routes';
@@ -24,6 +25,7 @@ import { appRoutes }                from './app.routes';
     AngularFireAuthModule,
     ElementsCommonUiModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+    StateFileUploadModule.forRoot(),
     NgChartsModule
 
   ],
