@@ -20,6 +20,15 @@ export const appRoutes: Route[] = [
       ).then((m) => m.FeaturesProductsModule),
   },
 
+    //Orders module
+  {
+    path: "orders",
+    loadChildren: () =>
+      import(
+        "../../../../libs/features/orders/src/lib/features-orders.module"
+      ).then((m) => m.FeaturesOrdersModule),
+  },
+
   //Home module
   {
     path: "home",
