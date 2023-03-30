@@ -8,7 +8,7 @@ import { SubSink }                            from 'subsink';
 import { IDeliveryLocation, IUserDetails }    from '@cows-will-fly/interfaces/user';
 import { AuthService }                        from '@cows-will-fly/state/auth';
 import { CartService }                        from '@cows-will-fly/state/cart';
-import { PromoCodeService } from '@cows-will-fly/state/checkout';
+import { PromoCodeService }                   from '@cows-will-fly/state/checkout';
 
 @Component({
   selector: 'app-checkout-form',
