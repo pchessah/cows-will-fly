@@ -23,7 +23,16 @@ export class CartService {
   }
 
   getCart(){
-    return this._cart$.pipe(filter(res => !!res));
+    return this._cart$.pipe(filter(res => !!res), map(val =>{
+      return val.map(cart =>{
+        if(cart.count === 0){
+          this.removeItemFromCart(cart.product);
+          return cart
+        } else {
+          return cart;
+        }
+      }).filter( t =>  !!t)
+    }));
   }
 
   getDeliveryCost(){
