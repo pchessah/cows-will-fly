@@ -23,6 +23,8 @@ export class ProductsTableComponent implements OnInit, OnDestroy {
   products$: Observable<IProduct[]> = null as any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  //TODO: VIEW CHILD PAGINATOR
+  
   constructor(private _productsStore$$: ProductStore,
               private _dialog:MatDialog,
               private _snackBar:MatSnackBar) { }
