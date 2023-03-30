@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { map } from 'rxjs';
-import { SubSink } from 'subsink';
-import { CartService } from '@cows-will-fly/state/cart';
+import { Router }                       from '@angular/router';
+import { map }                          from 'rxjs';
+import { SubSink }                      from 'subsink';
+import { CartService }                  from '@cows-will-fly/state/cart';
 
 @Component({
   selector: 'app-cart-page',
