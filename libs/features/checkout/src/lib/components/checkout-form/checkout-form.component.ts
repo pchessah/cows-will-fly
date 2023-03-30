@@ -55,13 +55,14 @@ export class CheckoutFormComponent implements OnInit {
 
   toggle(event:MatSlideToggleChange){
     this.customerWantsDelivery = event.checked;
+
     if(!this.customerWantsDelivery){
       this.checkoutForm.controls['location'].setValue(null);
       this.checkoutForm.controls['deliveryDetails'].setValue(null);
       this.checkoutForm.controls['location'].removeValidators(Validators.required);
       this._cartService.resetDeliveryCost();
     } else {
-      const deliveryCost = this.checkoutForm.get('location')?.value.cost ?? 0;
+      const deliveryCost = this.checkoutForm.get('location')?.value?.cost ?? 0;
       this._cartService.setDeliveryCost(deliveryCost);
       this.checkoutForm.controls['location'].setValidators(Validators.required);
     }
@@ -70,15 +71,19 @@ export class CheckoutFormComponent implements OnInit {
 
   togglePromoCode(event:MatSlideToggleChange){
     this.customerHasPromoCode = event.checked;
-    const control = this.checkoutForm.controls['promocode'];
+
     if(!this.customerHasPromoCode){
-      control.setValue(null);
+      this.checkoutForm.controls['promocode'].setValue(null);
       this._promoCodeService.clearCurrentPromoCode();
-      control.removeValidators(Validators.required);
+      this.checkoutForm.controls['promocode'].clearValidators();
     } else {
-      control.setValidators(Validators.required);
+      this.checkoutForm.controls['promocode'].setValidators(Validators.required);
     }
-    control.updateValueAndValidity();
+
+    this.checkoutForm.controls['promocode'].updateValueAndValidity();
+    
+    console.log(this.checkoutForm.valid);
+    
   }
 
   onLocationSelected(event:MatSelectChange){

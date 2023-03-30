@@ -84,7 +84,7 @@ export class AuthService {
     const forgotPassword$ = this.afAuth
       .sendPasswordResetEmail(passwordResetEmail, {url: "https://mbao-zetu.web.app/auth/login"})
       .then(() => this.openSnackBar('🔐 Password reset email sent, check your inbox.'))
-      .catch((error) => this.openSnackBar('😢 Password reset failed because of.' + error.message));
+      .catch((error) => this.openSnackBar('😢 Unable to reset password due to ' + error.message));
   
     return defer(() => from(forgotPassword$));
   }
@@ -99,7 +99,7 @@ export class AuthService {
           this.openSnackBar( "📩 Verification Email Sent");
           this.router.navigate(['auth/verify-email-address']);
         }).catch(error =>{
-          this.openSnackBar('😢 Verificationfailed because of.' + error.message);
+          this.openSnackBar('😢 Verification failed because of.' + error.message);
         });
   }
   
