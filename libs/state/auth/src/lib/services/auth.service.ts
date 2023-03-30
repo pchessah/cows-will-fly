@@ -92,7 +92,9 @@ export class AuthService {
   // Send email verfificaiton when new user sign up
   sendVerificationMail() {
       return this.afAuth.currentUser
-        .then((u: any) => u.sendEmailVerification({url: "https://mbao-zetu.web.app/auth/login"}))
+        .then((u:any) => {
+          u.sendEmailVerification({url: "https://mbao-zetu.web.app/auth/login"})
+        })
         .then(() => {
           this.openSnackBar( "📩 Verification Email Sent");
           this.router.navigate(['auth/verify-email-address']);
