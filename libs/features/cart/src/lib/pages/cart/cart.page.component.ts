@@ -20,7 +20,7 @@ export class CartPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() { 
     this._sbS.sink = 
-      this._cartService.getCart().pipe(map(n =>  n.length === 0 )).subscribe(bool =>{
+      this._cartService.getCart().pipe(map(n =>  n.length === 0 )).subscribe(bool => {
         this.noItemsInCart = bool;
       });
   }

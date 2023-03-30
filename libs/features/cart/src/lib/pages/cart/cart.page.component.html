@@ -3,12 +3,12 @@
   <ng-container *ngIf="!noItemsInCart else noItemsTemplate">
     <span class="title"> Your Cart </span>
     <div class="card">
-      <app-cart-summary></app-cart-summary>
+      <app-cart-summary (updateNoItemsInCart)="noItemsInCart = true"></app-cart-summary>
     </div>
     <div class="action-card">
       <button class="action-btn" (click)="clearCart()" mat-raised-button color="warn">Clear Cart</button>
-      <button  class="action-btn"  (click)="goToProducts()" mat-stroked-button color="primary">Shop More</button>
-      <button  class="action-btn"  (click)="goToCheckout()" mat-raised-button color="primary">Check out</button>
+      <button class="action-btn" (click)="goToProducts()" mat-stroked-button color="primary">Shop More</button>
+      <button class="action-btn" (click)="goToCheckout()" mat-raised-button color="primary">Check out</button>
     </div>
   </ng-container>
 

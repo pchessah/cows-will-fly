@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SubSink }                  from 'subsink';
 import { combineLatest }            from 'rxjs';
 import { DeviceDetectorService }    from 'ngx-device-detector';
@@ -7,6 +7,7 @@ import { IProduct }                 from '@cows-will-fly/interfaces/product';
 import { IPromoCode }               from '@cows-will-fly/interfaces/user';
 import { CartService }              from '@cows-will-fly/state/cart';
 import { PromoCodeService }         from '@cows-will-fly/state/checkout';
+
 
 @Component({
   selector: 'app-cart-summary',
@@ -19,6 +20,7 @@ export class CartSummaryComponent implements OnInit{
 
   @Input()isSingleProductPage: boolean = false;
   @Input() isCheckOutPage: boolean = false;
+  @Output() updateNoItemsInCart:EventEmitter<any> = new EventEmitter();
 
   displayedColumns: string[] =  [ 'thumbnail', 'name', 'quantity', 'amount', 'remove'];
   displayedDeliveryCostColumns: string[] =  [ 't', 'n', 'q', 'a', 'r'];
@@ -44,7 +46,10 @@ export class CartSummaryComponent implements OnInit{
 
     this._sbS.sink = 
         combineLatest([cart$, deliveryCost$, promoCode$]).subscribe(([cart, deliveryCost, currentPromoCode]) => {
-          this.dataSource = cart;
+          this.dataSource = cart.filter(c => c.count > 0);
+          if(this.dataSource.length  === 0){
+            this.updateNoItemsInCart.emit()
+          }
           this.deliveryCost = deliveryCost;
           this.currentPromoCode = currentPromoCode;
 
@@ -89,10 +94,14 @@ export class CartSummaryComponent implements OnInit{
       productCount = 0;
     }
 
-    let updatedCart = this.dataSource.filter(c => c.product.id !== cart.product.id);
-    const cartItem:ICart = {product: cart.product, count: Number(productCount)};
-    updatedCart = [...updatedCart, cartItem];
-    this._cartService.updateCart(updatedCart);
+    if(productCount === 0){
+      this._cartService.removeItemFromCart(cart.product);
+    } else {
+      let updatedCart = this.dataSource.filter(c => c.product.id !== cart.product.id);
+      const cartItem:ICart = {product: cart.product, count: Number(productCount)};
+      updatedCart = [...updatedCart, cartItem];
+      this._cartService.updateCart(updatedCart);
+    }
   }
 
   ngOnDestroy(){
