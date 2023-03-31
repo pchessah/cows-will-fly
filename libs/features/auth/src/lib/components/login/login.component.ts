@@ -17,6 +17,7 @@ export class LogInComponent implements OnInit {
   private _sbs = new SubSink();
   isLoading: boolean = false;
   isLoggedIn: boolean = false;
+  emailIsVerified: boolean = false;
 
   constructor(private _fb:FormBuilder,
               private _router:Router,
@@ -67,6 +68,11 @@ export class LogInComponent implements OnInit {
         this._authService.getLoggedInUser().subscribe(u => {
           if (u){
             this.isLoggedIn = true;
+            this.emailIsVerified =  u.emailVerified;
+            if(!this.emailIsVerified){
+              window.alert('You are not verified yet, Kindly verify email before logging in.');
+              this._router.navigateByUrl('/auth/verify-email-address');
+            }
           }
           this.isLoading = false;
         })

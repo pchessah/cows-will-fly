@@ -21,12 +21,12 @@
         <p>
           <mat-form-field appearance="outline">
             <input type="password" matInput placeholder="Confirm Password" formControlName="password2">
-            <span class="password-error" *ngIf="!isPasswordTheSame">Passwords are not the same.</span>
           </mat-form-field>
+          <span class="password-error" *ngIf="!isPasswordTheSame">Passwords are not the same.</span>
         </p>
 
         <div class="button-container">
-          <button [disabled]="!signupForm.valid || isLoading" color="primary" type="submit" mat-raised-button>
+          <button [disabled]="!signupForm.valid || isLoading || !isPasswordTheSame" color="primary" type="submit" mat-raised-button>
             <ng-container *ngIf="!isLoading; else loading">
               Sign Up
             </ng-container>

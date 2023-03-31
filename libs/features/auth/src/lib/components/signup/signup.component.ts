@@ -33,10 +33,10 @@ export class SignUpComponent implements OnInit, OnDestroy{
 
   ngOnInit() { 
     this._sbS.sink = 
-        this.signupForm.valueChanges.subscribe(val =>{
+        this.signupForm.valueChanges.subscribe(val => {
           const password1 = val.password;
           const password2 = val.password2;
-          this.isPasswordTheSame = password1 === password2
+          this.isPasswordTheSame = password1 === password2;
         });
   }
 
@@ -46,6 +46,7 @@ export class SignUpComponent implements OnInit, OnDestroy{
       const signUpFormValue = this.signupForm.value;
       const email = signUpFormValue.email;
       const password = signUpFormValue.password;
+
       this._sbS.sink =
           this._authService.signUp(email, password).subscribe(res =>{
             this.isLoading = false;

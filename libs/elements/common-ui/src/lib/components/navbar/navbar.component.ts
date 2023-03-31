@@ -64,6 +64,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
           }
         })
   }
+  
   logOut(){
     const a = window.confirm('Are you sure you want to log out?')
     if(a){
