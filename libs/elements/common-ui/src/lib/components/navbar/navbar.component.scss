@@ -9,8 +9,7 @@
 }
 
 .title{
-  font-size: 50px;
-  font-family: 'Explora', cursive;
+  font-size: 24px;
   font-weight: 600;
 }
 
@@ -33,7 +32,7 @@
 }
 
 .login-text{
-  font-size: 25px;
+  font-size: 14px;
   text-decoration: underline;
 }
 
@@ -44,4 +43,13 @@
 .logout-text, .fa-right-from-bracket{
   color: red !important;
   font-size: 25px !important;
+}
+
+.empty-cart > .fa{
+  margin-right: 12px;
+}
+
+.empty-cart{
+  padding: 18px 15px;
+  font-size: 18px;
 }

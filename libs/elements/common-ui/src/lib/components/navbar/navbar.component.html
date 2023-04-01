@@ -49,11 +49,10 @@
 
         <span mat-menu-item *ngIf="cartCount$ | async as cartCount; else emptyCart" (click)="goToCartPage()" >
           <span class="cart-icon" [matBadge]="cartCount"
-            matBadgeColor="warn">
+                 matBadgeColor="warn">
             <i class="fa fa-cart-shopping"></i>
           </span>
           &nbsp;
-          <span class="login-text mobile">Cart</span>
         </span>
 
         <span mat-menu-item (click)="name ? emailVerified ? null : goToVerifyEmailAddress() : goToLogin()">
@@ -89,5 +88,8 @@
 </mat-card>
 
 <ng-template #emptyCart>
-  <i class="fa fa-cart-shopping"></i>
+  <div class="empty-cart">
+    <i class="fa fa-cart-shopping"></i>
+    <span>Cart</span>
+  </div>
 </ng-template>
