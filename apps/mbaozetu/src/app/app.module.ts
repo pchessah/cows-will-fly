@@ -1,4 +1,4 @@
-import { NgModule, isDevMode }        from '@angular/core';
+import { NgModule, isDevMode }       from '@angular/core';
 import { BrowserModule }             from '@angular/platform-browser';
 import { BrowserAnimationsModule }   from '@angular/platform-browser/animations';  
 import { MatButtonModule }           from '@angular/material/button';
@@ -8,6 +8,7 @@ import { AngularFirestoreModule }    from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireModule }         from "@angular/fire/compat";
 import { ServiceWorkerModule }       from '@angular/service-worker';
+import { HttpClientModule }          from '@angular/common/http';
 
 import { FeaturesHomeModule}         from '@cows-will-fly/features/home';
 import { StateProductsModule }       from '@cows-will-fly/state/products';
@@ -16,6 +17,7 @@ import { StateCheckoutModule }       from '@cows-will-fly/state/checkout';
 import { StateLocalStorageModule }   from "@cows-will-fly/state/local-storage";
 import { StateAuthModule }           from "@cows-will-fly/state/auth";
 import { FeaturesCookiesModule }     from '@cows-will-fly/features/cookies';
+import { FeaturesLangchainModule }   from '@cows-will-fly/features/langchain';
 
 import { AppRoutingModule }          from '../routes/app.routing.module';
 import { environemnt }               from '../environments/environment';
@@ -36,7 +38,9 @@ import { AppComponent }              from './app.component';
     AngularFirestoreModule.enablePersistence(),
     AngularFireStorageModule,
     AngularFireAuthModule,
-
+    HttpClientModule,
+    
+    FeaturesLangchainModule.forRoot(),
     StateCheckoutModule.forRoot(),
     StateProductsModule.forRoot(),
     StateCartModule.forRoot(),
