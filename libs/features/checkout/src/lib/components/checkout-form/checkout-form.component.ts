@@ -82,7 +82,6 @@ export class CheckoutFormComponent implements OnInit {
 
     this.checkoutForm.controls['promocode'].updateValueAndValidity();
     
-    console.log(this.checkoutForm.valid);
     
   }
 
