@@ -43,3 +43,7 @@ apps/mbaozetu/src/environments/environment.prod.ts
 apps/mbaozetu/src/environments/environment.ts
 apps/mbaozetu-dashboard/src/environments/environment.prod.ts
 apps/mbaozetu-dashboard/src/environments/environment.ts
+apps/notify-pwa/src/environments/environment.ts
+apps/notify-pwa/src/environments/environment.prod.ts
+apps/notify-pwa-dashboard/src/environments/environment.ts
+apps/notify-pwa-dashboard/src/environments/environment.prod.ts

@@ -47,7 +47,8 @@
         "libs/state/local-storage/src/index.ts"
       ],
       "@cows-will-fly/state/orders": ["libs/state/orders/src/index.ts"],
-      "@cows-will-fly/state/products": ["libs/state/products/src/index.ts"]
+      "@cows-will-fly/state/products": ["libs/state/products/src/index.ts"],
+      "@cows-will-fly/state/pwa": ["libs/state/pwa/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

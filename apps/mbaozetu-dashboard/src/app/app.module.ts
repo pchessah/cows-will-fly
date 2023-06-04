@@ -19,7 +19,6 @@ import { appRoutes }                from './app.routes';
     BrowserModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environemnt.firebaseConfig),
-    AngularFireModule,
     AngularFirestoreModule.enablePersistence(),
     AngularFireStorageModule,
     AngularFireAuthModule,
