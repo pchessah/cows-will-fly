@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-screen.component.css']
 })
 export class HomeScreenComponent {
+  availability:'available' | "travelled" | "unavailable" = "travelled";
 
 }

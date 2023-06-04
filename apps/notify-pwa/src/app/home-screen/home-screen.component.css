@@ -1,0 +1,12 @@
+.container{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 50px;
+}
+
+nz-result{
+  border:1px solid grey;
+  border-radius: 5px;
+}

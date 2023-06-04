@@ -1,7 +1,26 @@
-<nz-result nzStatus="success" nzTitle="Successfully Purchased Cloud Server ECS!"
-  nzSubTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait.">
-  <div nz-result-extra>
-    <button nz-button nzType="primary">Go Console</button>
-    <button nz-button>Buy Again</button>
-  </div>
-</nz-result>
+<div class="container">
+
+  <ng-container [ngSwitch]="availability">
+
+    <ng-container *ngSwitchCase="'available'">
+      <nz-result nzStatus="success" nzTitle="Currently, available" nzSubTitle="">
+      </nz-result>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'unavailable'">
+      <nz-result nzTitle="Currently unavailable" nzStatus="error"
+        nzSubTitle="You will be notified, when availabilty changes back.">
+      </nz-result>
+
+    </ng-container>
+
+
+    <ng-container *ngSwitchCase="'travelled'">
+      <nz-result nzStatus="info" nzTitle="Just travelled, will be back."  nzSubTitle="You will be notified, when availabilty changes back.">
+      </nz-result>
+
+    </ng-container>
+
+
+  </ng-container>
+</div>
