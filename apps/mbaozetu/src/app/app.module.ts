@@ -17,7 +17,7 @@ import { StateCheckoutModule }       from '@cows-will-fly/state/checkout';
 import { StateLocalStorageModule }   from "@cows-will-fly/state/local-storage";
 import { StateAuthModule }           from "@cows-will-fly/state/auth";
 import { FeaturesCookiesModule }     from '@cows-will-fly/features/cookies';
-import { FeaturesLangchainModule }   from '@cows-will-fly/features/langchain';
+// import { FeaturesLangchainModule }   from '@cows-will-fly/features/langchain';
 
 import { AppRoutingModule }          from '../routes/app.routing.module';
 import { environemnt }               from '../environments/environment';
@@ -40,7 +40,7 @@ import { AppComponent }              from './app.component';
     AngularFireAuthModule,
     HttpClientModule,
     
-    FeaturesLangchainModule.forRoot(),
+    // FeaturesLangchainModule.forRoot(),
     StateCheckoutModule.forRoot(),
     StateProductsModule.forRoot(),
     StateCartModule.forRoot(),
