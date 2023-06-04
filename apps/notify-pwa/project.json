@@ -26,26 +26,35 @@
             "glob": "**/*",
             "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
             "output": "/assets/"
-          }
+          },
+          "apps/notify-pwa/src/manifest.webmanifest",
+          "apps/notify-pwa/src/manifest.webmanifest",
+          "apps/notify-pwa/src/manifest.webmanifest",
+          "apps/notify-pwa/src/manifest.webmanifest",
+          "apps/notify-pwa/src/manifest.webmanifest",
+          "apps/notify-pwa/src/manifest.webmanifest",
+          "apps/notify-pwa/src/manifest.webmanifest"
         ],
         "styles": [
           "apps/notify-pwa/src/styles.scss",
           "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
         ],
-        "scripts": []
+        "scripts": [],
+        "serviceWorker": true,
+        "ngswConfigPath": "apps/notify-pwa/ngsw-config.json"
       },
       "configurations": {
         "production": {
           "budgets": [
             {
               "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumWarning": "5mb",
+              "maximumError": "5mb"
             },
             {
               "type": "anyComponentStyle",
-              "maximumWarning": "2kb",
-              "maximumError": "4kb"
+              "maximumWarning": "1mb",
+              "maximumError": "1mb"
             }
           ],
           "outputHashing": "all"

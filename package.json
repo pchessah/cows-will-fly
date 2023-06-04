@@ -6,18 +6,15 @@
     "start": "nx serve mbaozetu",
     "build": "nx build mbaozetu",
     "deploy": "firebase deploy --only hosting:mbao-zetu",
-
     "start-dashboard": "nx serve mbaozetu-dashboard",
     "build-dashboard": "nx build mbaozetu-dashboard",
     "deploy-dashboard": "firebase deploy --only hosting:mbao-zetu-dashboard",
-
     "start-pwa": "nx serve notify-pwa",
     "build-pwa": "nx build notify-pwa",
-    "deploy-pwa": "firebase deploy --only hosting:notify-pwa",
-
+    "deploy-pwa": "firebase deploy --only hosting:client-notify-me",
     "start-pwa-dashboard": "nx serve notify-pwa-dashboard",
-    "build--dashboard": "nx build notify-pwa-dashboard",
-    "deploy-pwa-dashboard": "firebase deploy --only hosting:notify-pwa-dashboard"
+    "build-pwa-dashboard": "nx build notify-pwa-dashboard",
+    "deploy-pwa-dashboard": "firebase deploy --only hosting:dashboard-notify-me"
   },
   "private": true,
   "dependencies": {
@@ -63,7 +60,7 @@
     "@angular/cli": "~15.1.0",
     "@angular/compiler-cli": "16.0.4",
     "@angular/language-service": "16.0.4",
-    "@angular/pwa": "^15.2.4",
+    "@angular/pwa": "^15.2.8",
     "@nrwl/cypress": "16.3.2",
     "@nrwl/eslint-plugin-nx": "16.3.2",
     "@nrwl/jest": "16.3.2",
