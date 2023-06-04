@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { AngularFirestoreModule }   from '@angular/fire/compat/firestore';
 import { AngularFireModule }        from "@angular/fire/compat";
-
+import { BrowserAnimationsModule }   from '@angular/platform-browser/animations';  
 import { AppComponent } from "./app.component";
 
 import { RouterModule } from "@angular/router";
@@ -16,6 +16,7 @@ import { environemnt } from "../environments/environment";
   declarations: [AppComponent, HomeScreenComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(environemnt.firebaseConfig),
     AngularFirestoreModule.enablePersistence(),
     RouterModule.forRoot(appRoutes, { initialNavigation: "enabledBlocking" }),

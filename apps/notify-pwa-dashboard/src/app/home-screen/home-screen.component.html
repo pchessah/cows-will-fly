@@ -1,0 +1,22 @@
+<div class="container">
+  <span class="availability">The current status set is: <span [ngClass]="availability === 'travelled' ? 'travelled' : availability ==='available' ? 'available' : 'unavailable'">{{availability}}</span>.</span>
+
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-select [value]="availability" (selectionChange)="updateAvailability($event)">
+        <mat-option [value]="'available'">
+          Available
+        </mat-option>
+  
+        <mat-option [value]="'travelled'">
+          Travelled
+        </mat-option>
+  
+        <mat-option [value]="'unavailable'">
+          Unavailable
+        </mat-option>
+  
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

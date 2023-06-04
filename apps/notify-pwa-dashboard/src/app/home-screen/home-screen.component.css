@@ -1,0 +1,41 @@
+.container{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  padding: 50px;
+}
+
+.container div{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 20px;
+  padding-top: 35px;
+  margin-top: 5px;
+  border-radius: 5px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.availability{
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.availability span{
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.available{
+  color: green;
+}
+
+.unavailable{
+  color: red;
+}
+
+.travelled{
+  color: blue;
+}
