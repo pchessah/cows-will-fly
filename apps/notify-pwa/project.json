@@ -22,6 +22,8 @@
         "assets": [
           "apps/notify-pwa/src/favicon.ico",
           "apps/notify-pwa/src/assets",
+          "apps/notify-pwa/src/firebase-messaging-sw.js",
+          "apps/notify-pwa/src/manifest.json",
           {
             "glob": "**/*",
             "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",

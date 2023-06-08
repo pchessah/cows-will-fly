@@ -12,6 +12,7 @@ import { ElementsExternalModule } from "@cows-will-fly/elements/external";
 import { StatePwaModule } from "@cows-will-fly/state/pwa";
 import { environemnt } from "../environments/environment";
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
 
 @NgModule({
   declarations: [AppComponent, HomeScreenComponent],
@@ -23,6 +24,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     RouterModule.forRoot(appRoutes, { initialNavigation: "enabledBlocking" }),
     ElementsExternalModule,
     StatePwaModule,
+    AngularFireMessagingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable

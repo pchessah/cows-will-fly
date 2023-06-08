@@ -7,6 +7,7 @@ import { BrowserAnimationsModule }   from '@angular/platform-browser/animations'
 import { AppComponent } from "./app.component";
 
 import { RouterModule } from "@angular/router";
+import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
 import { appRoutes } from "./app.routes";
 import { HomeScreenComponent } from "./home-screen/home-screen.component";
 import { ElementsExternalModule } from "@cows-will-fly/elements/external";
@@ -22,7 +23,8 @@ import { environemnt } from "../environments/environment";
     AngularFirestoreModule.enablePersistence(),
     RouterModule.forRoot(appRoutes, { initialNavigation: "enabledBlocking" }),
     ElementsExternalModule,
-    StatePwaModule
+    StatePwaModule,
+    AngularFireMessagingModule
   ],
   providers: [],
   bootstrap: [AppComponent],
