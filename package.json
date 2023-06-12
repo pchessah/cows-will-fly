@@ -17,6 +17,7 @@
     "deploy-pwa-dashboard": "firebase deploy --only hosting:dashboard-notify-me"
   },
   "private": true,
+  "type":"module",
   "dependencies": {
     "@angular/animations": "16.0.4",
     "@angular/cdk": "16.0.3",
