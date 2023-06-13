@@ -5,7 +5,7 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import { environemnt } from "../../environments/environment";
 import { AngularFireMessaging } from "@angular/fire/compat/messaging";
 import { BehaviorSubject } from "rxjs";
-import { Functions } from "@angular/fire/functions";
+
 
 @Component({
   selector: "cows-will-fly-home-screen",
@@ -17,34 +17,44 @@ export class HomeScreenComponent implements OnInit {
   message: any = null;
   availability!: "available" | "travelled" | "unavailable";
   currentMessage = new BehaviorSubject(null);
-  private functions: Functions = inject(Functions);
+
 
   constructor(
     private _availabilityService: AvailabilityService,
     private angularFireMessaging: AngularFireMessaging
   ) {
-    this.angularFireMessaging.messages.subscribe((_messaging) => {
-      debugger;
-    });
+    this.angularFireMessaging.onMessage((message) =>{
+
+    })
   }
 
   requestPermission() {
-    this.angularFireMessaging.requestToken.subscribe((token) => {
-      console.log(token);
-      debugger;
+
+    const messaging = getMessaging();
+
+    getToken(messaging, { vapidKey: environemnt.firebaseConfig.vapidKey }).then((currentToken) => {
+      if (currentToken) {
+        console.log("Hurraaa!!! we got the token.....")
+        console.log(currentToken);
+        // Send the token to your server and update the UI if necessary
+        // ...
+      } else {
+        // Show permission request UI
+        console.log('No registration token available. Request permission to generate one.');
+        // ...
+      }
+    }).catch((err) => {
+      console.log('An error occurred while retrieving token. ', err);
+      // ...
     });
-  }
 
-  receiveMessage() {
-    this.angularFireMessaging.messages.subscribe((payload) => {
-      console.log("new message received. ", payload);
-      debugger;
+  }
+  listen() {
+    const messaging = getMessaging();
+    onMessage(messaging, (payload) => {
+      console.log('Message received. ', payload);
+      this.message=payload;
     });
-  }
-
-
-  sendMessage(){
-    this.functions
   }
 
   ngOnInit(): void {
@@ -55,6 +65,6 @@ export class HomeScreenComponent implements OnInit {
       });
 
       this.requestPermission()
-      this.receiveMessage();
+      this.listen()
   }
 }

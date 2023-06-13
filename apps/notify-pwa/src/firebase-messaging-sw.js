@@ -1,6 +1,5 @@
 importScripts("https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js");
 importScripts("https://www.gstatic.com/firebasejs/9.17.1/firebase-messaging-compat.js");
-var functions = require ('firebase-functions');
 
 
 firebase.initializeApp({
@@ -16,23 +15,3 @@ firebase.initializeApp({
 
 const messaging = firebase.messaging();
 
-export const sendNotificationOnObjectAdd = functions.firestore
-  .document('availability/{objectId}')
-  .onCreate(async (snapshot, context) => {
-    const objectData = snapshot.data();
-    const payload = {
-      notification: {
-        title: 'New Object Added',
-        body: `Object ID: ${context.params.objectId}`,
-      },
-    };
-
-    const tokens = []; // Add recipient tokens here
-
-    try {
-      await admin.messaging().sendToDevice(tokens, payload);
-      console.log('Notification sent successfully.');
-    } catch (error) {
-      console.error('Error sending notification:', error);
-    }
-  });
