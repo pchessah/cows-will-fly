@@ -11,52 +11,46 @@
 import * as logger from "firebase-functions/logger";
 import * as admin from "firebase-admin";
 import * as  functions from 'firebase-functions';
+import { TokenMessage } from "firebase-admin/lib/messaging/messaging-api";
 
 admin.initializeApp();
 
-export const v1trigger =  functions.firestore
-.document('availability/{docId}').onWrite(async (change, context)=>{
-  const messaging = admin.messaging();
 
-  const payload = {
-    notification: {
-      title: 'Field Changed',
-      body: 'The field has been updated.',
-      icon: 'your_notification_icon_url',
-    },
-  };
+export const sendNotificationOnChange = functions.firestore
+  .document('availability/{docId}')
+  .onWrite(async (change, context) => {
+    logger.log('calling function:✅');
 
-  logger.info("change is is 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥", change);
+    // Retrieve the FCM tokens of your Angular PWA users
+    const tokensSnapshot = await admin.firestore().collection('tokens').get();
+    const tokens = tokensSnapshot.docs.map((doc) => doc.data().token);
 
-  try {
-     const response = await messaging.sendToTopic("availability", payload)
-     logger.info("response is😃😃😃😃😃😃😃😃😃😃", response);
-     return response
-  } catch (error) {
-    logger.error("⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️ there was an error", error)
-    return error
-  }
-})
+    tokens.map(async token => {
+      logger.log('calling function with token: 🔥', token);
 
-// export const triggerNotification = onDocumentWritten("availability/{docId}", async (res) =>{
-//   // const messaging = admin.messaging();
+      let payload:TokenMessage = {
+        notification: {
+          title: 'Field Changed',
+          body: 'The field has been changed in the Firestore collection',
+        },
+       
+        token: token
+      };
+      const message = {
+        notification: payload.notification,
+        token: payload.token
+      };
+      const res = await admin.messaging().send(message);
 
-//   // const payload = {
-//   //   notification: {
-//   //     title: 'Field Changed',
-//   //     body: 'The field has been updated.',
-//   //     icon: 'your_notification_icon_url',
-//   //   },
-//   // };
+      logger.log('Successfully sent push notification:✅');
+      logger.log('res is✨ :', JSON.stringify(res));
 
-//   // logger.info("res is is 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥", res);
+      return res
+    });
 
-//   // try {
-//   //    const response = await messaging.sendToTopic("availability", payload)
-//   //    logger.info("response is😃😃😃😃😃😃😃😃😃😃", response);
-//   //    return response
-//   // } catch (error) {
-//   //   logger.error("⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️ there was an error", error)
-//   //   return error
-//   // }
-// })
+  });
+
+
+
+
+
