@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName: 'state-pwa',
-  preset: '../../../jest.preset.js',
+    preset: '../../../jest.preset.cjs',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   coverageDirectory: '../../../coverage/libs/state/pwa',
   transform: {
