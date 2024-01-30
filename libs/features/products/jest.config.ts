@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName: 'features-products',
-  preset: '../../../jest.preset.js',
+    preset: '../../../jest.preset.cjs',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeScreenComponent } from './home-screen.component';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 describe('HomeScreenComponent', () => {
   let component: HomeScreenComponent;
@@ -8,7 +9,8 @@ describe('HomeScreenComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeScreenComponent]
+      declarations: [HomeScreenComponent],
+      providers: [AngularFirestore]
     });
     fixture = TestBed.createComponent(HomeScreenComponent);
     component = fixture.componentInstance;
