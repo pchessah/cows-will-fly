@@ -1,4 +1,4 @@
-name: My Test Monorepo Project
+name: Build
 on:
   push:
       branches:
