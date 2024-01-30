@@ -1,4 +1,4 @@
-name: Build
+name: SonarScan
 on:
   push:
       branches:
@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   sonarcloudScan1:
-    name: SonarCloudScan1
+    name: mbaozetuSonarScan
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -21,7 +21,7 @@ jobs:
           projectBaseDir: apps/mbaozetu
           
   sonarcloudScan2:
-    name: SonarCloudScan2
+    name: notify-pwascan
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
