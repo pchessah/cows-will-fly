@@ -5,10 +5,16 @@ on:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+    paths: 
+      - 'apps/mbaozetu'
+    
 jobs:
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
     steps:
       - uses: actions/checkout@v3
         with:
