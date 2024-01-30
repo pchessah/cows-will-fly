@@ -20,9 +20,10 @@ import { FeaturesCookiesModule }     from '@cows-will-fly/features/cookies';
 // import { FeaturesLangchainModule }   from '@cows-will-fly/features/langchain';
 
 import { AppRoutingModule }          from '../routes/app.routing.module';
-import { environemnt }               from '../environments/environment';
+
 import { Error404Component }         from './error404/error404.component';
 import { AppComponent }              from './app.component';
+import { environment } from './environments/environment';
 
 @NgModule({
   declarations: [AppComponent, Error404Component],
@@ -33,7 +34,7 @@ import { AppComponent }              from './app.component';
     FeaturesHomeModule,
     FeaturesCookiesModule,
     MatButtonModule,
-    AngularFireModule.initializeApp(environemnt.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFirestoreModule.enablePersistence(),
     AngularFireStorageModule,
