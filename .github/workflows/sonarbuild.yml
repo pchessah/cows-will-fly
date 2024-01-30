@@ -6,6 +6,26 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
+  main:
+    name: Main Configuration
+    uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.10
+    with:
+      number-of-agents: 3
+      init-commands: |
+        npx nx-cloud start-ci-run --stop-agents-after="build" --agent-count=3
+      parallel-commands: |
+        npx nx-cloud record -- npx nx workspace-lint
+        npx nx-cloud record -- npx nx format:check
+      parallel-commands-on-agents: |
+        npx nx affected --target=lint --parallel=3
+        npx nx run-many --all --target=test --parallel=3 --ci --code-coverage --coverageReporters=lcov
+        npx nx affected --target=build --parallel=3
+      final-commands: |
+        npx nx-cloud record node ./tools/scripts/coverageMerger.js
+      artifacts-path: |
+        coverage/lcov.info
+      artifacts-name: coverage-report
+
   sonarcloudScan1:
     name: mbaozetuSonarScan
     runs-on: ubuntu-latest
