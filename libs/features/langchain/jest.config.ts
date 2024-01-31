@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName: 'features-langchain',
-    preset: '../../../jest.preset.cjs',
+    preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {

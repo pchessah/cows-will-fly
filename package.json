@@ -17,7 +17,6 @@
     "deploy-pwa-dashboard": "firebase deploy --only hosting:dashboard-notify-me"
   },
   "private": true,
-  "type": "module",
   "dependencies": {
     "@angular/animations": "16.0.4",
     "@angular/cdk": "16.0.3",
@@ -33,6 +32,7 @@
     "@angular/router": "16.0.4",
     "@angular/service-worker": "16.0.4",
     "@emailjs/browser": "^3.10.0",
+    "@koliveira15/nx-sonarqube": "^3.4.0",
     "@ngrx/store": "16.0.1",
     "@nrwl/angular": "16.3.2",
     "@nrwl/cli": "^15.6.3",

@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName: 'state-local-storage',
-    preset: '../../../jest.preset.cjs',
+    preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {

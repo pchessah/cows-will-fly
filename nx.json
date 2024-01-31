@@ -23,6 +23,9 @@
     },
     "lint": {
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+    },
+    "sonar": {
+      "dependsOn": ["^test", "test"]
     }
   },
   "namedInputs": {

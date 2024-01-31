@@ -117,6 +117,20 @@
           "codeCoverage": true
         }
       }
+    },
+    "sonar": {
+      "executor": "@koliveira15/nx-sonarqube:scan",
+      "options": {
+        "name": "notifyPWA",
+        "hostUrl": "https://sonarcloud.io/",
+        "projectKey": "notifyPWA",
+        "skipTargetDefaults": false,
+        "branches": false,
+        "organization": "pchessah",
+        "qualityGate": true,
+        "qualityGateTimeout": "300",
+        "skipImplicitDeps": false
+      }
     }
   },
   "tags": []

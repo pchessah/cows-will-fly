@@ -49,3 +49,6 @@ apps/notify-pwa-dashboard/src/environments/environment.ts
 apps/notify-pwa-dashboard/src/environments/environment.prod.ts
 apps/mbaozetu/src/app/environments/environment.ts
 apps/mbaozetu/src/app/environments/environment.prod.ts
+
+# Sonar
+.scannerwork
